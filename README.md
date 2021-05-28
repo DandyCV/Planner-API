@@ -6,21 +6,11 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-```
-ruby -v 
-=> 3.0.1
-gem install bundler
-```
 
-* System dependencies 
-```
-sudo apt-get install libpq-dev
-sudo apt install postgresql postgresql-contrib
-```
+* System dependencies
+
 * Configuration
-```
-bundle install
-```
+
 * Database creation
 
 * Database initialization
