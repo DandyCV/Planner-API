@@ -1,0 +1,71 @@
+PreCommit:
+  AuthorEmail:
+    enabled: true
+    required: false
+    description: 'Check author email'
+
+  AuthorName:
+    enabled: false
+    description: 'Check for author name'
+
+  MergeConflicts:
+    enabled: true
+    description: 'Check for merge conflicts'
+
+  YamlSyntax:
+    enabled: true
+    description: 'Check YAML syntax'
+
+  BundleCheck:
+    enabled: true
+    description: 'Check Gemfile dependencies'
+    flags: ['check']
+    include:
+      - 'Gemfile'
+      - 'Gemfile.lock'
+      - '*.gemspec'
+
+  BundleAudit:
+    enabled: true
+    description: 'Check for vulnerable versions of gems'
+
+  Brakeman:
+    enabled: true
+    flags: ['--exit-on-warn', '--quiet', '--summary']
+
+  Fasterer:
+    enabled: true
+    description: 'Analyzing for potential speed improvements'
+    include: '**/*.rb'
+
+  TrailingWhitespace:
+    enabled: true
+    description: 'Check for trailing whitespace'
+    flags: ['-IHn', "[ \t]$"]
+
+  RailsBestPractices:
+    enabled: true
+    description: 'Analyze with RailsBestPractices'
+
+  Reek:
+    enabled: true
+    description: 'Analyze with Reek'
+    flags: ['--force-exclusion']
+    include:
+      - '**/*.gemspec'
+      - '**/*.rake'
+      - '**/*.rb'
+      - '**/Gemfile'
+      - '**/Rakefile'
+
+  RuboCop:
+    enabled: true
+    description: 'Analyze with RuboCop'
+    flags: ['--format=emacs', '--force-exclusion', '--display-cop-names']
+    include:
+      - '**/*.gemspec'
+      - '**/*.rake'
+      - '**/*.rb'
+      - '**/*.ru'
+      - '**/Gemfile'
+      - '**/Rakefile'
