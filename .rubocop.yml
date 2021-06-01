@@ -1,0 +1,102 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+
+# Style -----------------------------------------------------------------------
+
+Style/Documentation:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
+
+# Metrics ---------------------------------------------------------------------
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*.rb
+    - Rakefile
+    - lib/tasks/**/*.rake
+    - spec/**/*.rb
+    - config/routes.rb
+
+# Layout ----------------------------------------------------------------------
+
+Layout/ClassStructure:
+  Enabled: true
+  Categories:
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+    associations:
+      - has_one
+      - has_many
+      - belongs_to
+      - has_and_belongs_to_many
+  ExpectedOrder:
+      - module_inclusion
+      - constants
+      - associations
+      - public_class_methods
+      - initializer
+      - public_methods
+      - protected_methods
+      - private_methods
+
+# Rails -----------------------------------------------------------------------
+
+Rails:
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+# RSpec -----------------------------------------------------------------------
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/MessageChain:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/BeforeAfterAll:
+  Enabled: false
