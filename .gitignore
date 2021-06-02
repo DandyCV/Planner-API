@@ -27,4 +27,7 @@
 # Ignore coverage reports.
 /coverage
 
+# Rspec data
+/spec/examples.txt
+
 .DS_Store

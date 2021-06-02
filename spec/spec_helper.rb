@@ -18,7 +18,4 @@ RSpec.configure do |config|
   config.order = :random
 
   Kernel.srand(config.seed)
-
-  config.include FactoryBot::Syntax::Methods
-  config.include ActiveSupport::Testing::TimeHelpers
 end

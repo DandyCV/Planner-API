@@ -18,6 +18,8 @@ gem 'puma', '~> 5.0'
 # gem 'rack-cors'
 
 group :development, :test do
+  # RSpec testing framework
+  gem 'rspec', '~> 3.10'
   # RSpec testing framework to Ruby on Rails
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   # Fixtures replacement with a straightforward definition syntax
