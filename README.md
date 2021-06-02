@@ -8,6 +8,9 @@ Things you may want to cover:
 * Ruby version
 
 * System dependencies
+```
+sudo apt-get install cmake
+```
 
 * Configuration
 

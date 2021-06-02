@@ -18,8 +18,16 @@ gem 'puma', '~> 5.0'
 # gem 'rack-cors'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # RSpec testing framework to Ruby on Rails
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
+  # Fixtures replacement with a straightforward definition syntax
+  gem 'factory_bot_rails', '~> 6.2'
+  # Generates fake data
+  gem 'faker', '~> 2.18'
+  # Adds step-by-step debugging and stack navigation capabilities to pry using byebug
+  gem 'pry-byebug', '~> 3.9'
+  # Causes rails console to open pry
+  gem 'pry-rails', '~> 0.3.9'
 
   # Code quality
   # Help you increase your application performance by reducing the number of queries it makes
@@ -49,7 +57,15 @@ end
 
 group :test do
   # Code coverage for Ruby with a powerful configuration library and automatic merging of coverage across test suites
-  # gem 'simplecov', require: false
+  gem 'simplecov', '~> 0.21', '>= 0.21.2', require: false
+  # Custom SimpleCov formatter to generate a lcov style coverage
+  gem 'simplecov-lcov', '~> 0.8', '>= 0.8.0', require: false
+  # Validate the JSON returned by your Rails JSON APIs
+  gem 'json_matchers', '~> 0.11', '>= 0.11.1', require: 'json_matchers/rspec'
+  # Shoulda Matchers provides RSpec- and Minitest-compatible one-liners to test common Rails functionality
+  gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
+  # Inspects files in a git diff and warns on changed methods, classes and blocks which need to be tested
+  gem 'undercover', '~> 0.4.3', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
