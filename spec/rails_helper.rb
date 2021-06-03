@@ -9,10 +9,10 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 %w[support].each do |dir|
-  Dir[Rails.root.join('spec', dir, '**', '*.rb')].sort.each do |file|
-  require file unless file[/\A.+_spec\.rb\z/]
+  Dir[Rails.root.join('spec', dir, '**', '*.rb')].each do |file|
+    require file unless file[/\A.+_spec\.rb\z/]
   end
-  end
+end
 
 require 'rspec/rails'
 
