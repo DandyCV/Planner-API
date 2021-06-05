@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  scope :api do
-    scope :v1, module: :v1 do
-      post '/registration', to: 'users#create'
+  scope '/api' do
+    namespace :v1 do
+      scope '/users' do
+        resource :registration, only: [:create]
+      end
     end
   end
 end

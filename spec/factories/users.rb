@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :user do
-    email { Faker::Internet.email }
-    password { Faker::Internet.password }
+    email { ContextHelper.random_email }
+    password { ContextHelper.random_password }
   end
 end

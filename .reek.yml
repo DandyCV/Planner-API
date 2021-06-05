@@ -2,8 +2,5 @@ detectors:
   IrresponsibleModule:
     enabled: false
 
-  UncommunicativeModuleName:
-    enabled: false
-
 exclude_paths:
   - db/
