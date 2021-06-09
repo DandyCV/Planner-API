@@ -9,7 +9,7 @@ RSpec.describe 'Registrations', type: :request do
         post '/api/v1/users/registration', params: { email: user.email, password: user.password }
       end
 
-      it 'renders a new user' do
+      it 'response 201' do
         expect(response).to have_http_status(:created)
       end
     end
@@ -20,7 +20,7 @@ RSpec.describe 'Registrations', type: :request do
         post '/api/v1/users/registration', params: { email: user.email, password: user.password }
       end
 
-      it 'renders error' do
+      it 'response 422' do
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
