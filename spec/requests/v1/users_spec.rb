@@ -13,5 +13,16 @@ RSpec.describe 'Registrations', type: :request do
         expect(response).to have_http_status(:created)
       end
     end
+
+    context 'when user with the same email' do
+      before do
+        post '/api/v1/users/registration', params: { email: user.email, password: user.password }
+        post '/api/v1/users/registration', params: { email: user.email, password: user.password }
+      end
+
+      it 'renders error' do
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
   end
 end

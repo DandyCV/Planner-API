@@ -25,6 +25,9 @@ Style/ParallelAssignment:
 Style/DoubleNegation:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Naming/RescuedExceptionsVariableName:
   Enabled: false
 
@@ -81,6 +84,9 @@ Rails/FilePath:
 RSpec/MultipleExpectations:
   Enabled: false
 
+RSpec/MultipleMemoizedHelpers:
+  Max: 7
+
 RSpec/ExampleLength:
   Max: 10
 
@@ -121,7 +127,7 @@ Lint/DuplicateRegexpCharacterClassElement:
   Enabled: true
 
 Lint/EmptyBlock:
-  Enabled: true
+  Enabled: false
 
 Lint/EmptyClass:
   Enabled: true
