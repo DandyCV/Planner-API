@@ -15,6 +15,10 @@ gem 'puma', '~> 5.0'
 gem 'bcrypt', '~> 3.1.7'
 # Fast JSON:API serializer for Ruby Objects
 gem 'jsonapi-serializer', '~> 2.2.0'
+# Business transaction DSL
+gem 'dry-transaction', '~> 0.13.3'
+# Data validation library that provides a powerful DSL for defining schemas and validation rules
+gem 'dry-validation', '~> 1.6.0'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
