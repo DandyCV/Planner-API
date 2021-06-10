@@ -9,7 +9,7 @@ module Api::V1::Users
         respond_with(
           status: 201,
           entity: user,
-          serializer: Api::V1::Users::Registrations::Serializer::CreateSerializer
+          serializer: Api::V1::Users::Registrations::Serializer::Create
         )
       else
         respond_with(status: 422, entity: { errors: 'invalid credentials' })
