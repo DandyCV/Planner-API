@@ -9,19 +9,23 @@ RSpec.describe 'Registrations', type: :request do
         post '/api/v1/users/registration', params: { email: user.email, password: user.password }
       end
 
-      it 'response 201' do
-        expect(response).to have_http_status(:created)
+      it 'renders user' do
+        expect(response).to be_created
+        # expect(response).to match_json_schema('v1/users/registrations/create')
       end
     end
 
     context 'when user with the same email' do
+      let(:email) { random_email }
+
       before do
-        post '/api/v1/users/registration', params: { email: user.email, password: user.password }
-        post '/api/v1/users/registration', params: { email: user.email, password: user.password }
+        create(:user, email: email)
+        post '/api/v1/users/registration', params: { email: email, password: '123123' }
       end
 
       it 'response 422' do
         expect(response).to have_http_status(:unprocessable_entity)
+        # add error schema matching expectation
       end
     end
   end
