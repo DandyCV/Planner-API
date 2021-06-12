@@ -29,7 +29,7 @@ RSpec.describe Response do
       let(:args) { { entity: entity, status: status, serializer: serializer_class } }
 
       it 'calls render with custom params' do
-        allow(serializer_class).to receive(:new).with(entity).and_return(serializer_class_instance)
+        expect(serializer_class).to receive(:new).with(entity).and_return(serializer_class_instance)
         expect(test_class_instance).to receive(:render).with(json: serialized_entity, status: status)
         respond_with
       end

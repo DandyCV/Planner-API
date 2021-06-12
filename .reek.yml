@@ -5,5 +5,8 @@ detectors:
   UncommunicativeModuleName:
     enabled: false
 
+  NestedIterators:
+    enabled: false
+
 exclude_paths:
   - db/

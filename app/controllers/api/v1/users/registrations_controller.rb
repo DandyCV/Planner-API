@@ -3,26 +3,22 @@
 module Api::V1::Users
   class RegistrationsController < ApiController
     def create
-      user = User.new(params.permit(:email, :password))
+      Api::V1::Users::Registrations::Operation::Create.call(params) do |result|
+        result.success do |user|
+          respond_with(
+            status: 201,
+            entity: user,
+            serializer: Api::V1::Users::Registrations::Serializer::Create
+          )
+        end
 
-      if user.save
-        respond_with(
-          status: 201,
-          entity: user,
-          serializer: Api::V1::Users::Registrations::Serializer::Create
-        )
-      else
-        respond_with(status: 422, entity: { errors: 'invalid credentials' })
+        result.failure do |errors|
+          respond_with(
+            status: 422,
+            entity: errors
+          )
+        end
       end
-
-      # Api::V1::Users::Registrations::Operation::Create.call(params) do |result|
-      #   result.success do |post|
-      #     respond_with(status: 201, entity: post, serializer: Serializers::Post)
-      #   end
-
-      #   result.failure do |contract|
-      #     respond_with(status: 422, entity: contract, serializer: Serializers::JsonApi::ResourceError)
-      #   end
     end
   end
 end
