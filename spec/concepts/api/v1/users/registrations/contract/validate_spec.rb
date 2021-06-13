@@ -17,6 +17,12 @@ RSpec.describe Api::V1::Users::Registrations::Contract::Validate do
     expect(result.errors.to_h[:email]).to include('must be filled')
   end
 
+  it 'validates that email is a string' do
+    result = contract.call(email: 42)
+
+    expect(result.errors.to_h[:email]).to include('must be a string')
+  end
+
   it 'validates presence of the key "password"' do
     result = contract.call({})
 
@@ -27,6 +33,12 @@ RSpec.describe Api::V1::Users::Registrations::Contract::Validate do
     result = contract.call(password: '')
 
     expect(result.errors.to_h[:password]).to include('must be filled')
+  end
+
+  it 'validates that password is a string' do
+    result = contract.call(password: 42)
+
+    expect(result.errors.to_h[:password]).to include('must be a string')
   end
 
   it 'validates uniqueness of the email' do
