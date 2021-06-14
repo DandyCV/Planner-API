@@ -2,11 +2,12 @@
 
 RSpec.describe 'Registrations', type: :request do
   let(:user) { build(:user) }
+  let(:params) { { email: user.email, password: user.password, password_confirmation: user.password } }
 
   describe 'POST /api/v1/users/registration' do
     context 'when valid request' do
       before do
-        post '/api/v1/users/registration', params: { email: user.email, password: user.password }
+        post '/api/v1/users/registration', params: params
       end
 
       it 'renders user' do
@@ -20,7 +21,7 @@ RSpec.describe 'Registrations', type: :request do
 
       before do
         create(:user, email: email)
-        post '/api/v1/users/registration', params: { email: email, password: '123123' }
+        post '/api/v1/users/registration', params: { email: email, password: '123123', password_confirmation: '123123' }
       end
 
       it 'response 422' do

@@ -8,5 +8,8 @@ detectors:
   NestedIterators:
     enabled: false
 
+  FeatureEnvy:
+    enabled: false
+
 exclude_paths:
   - db/

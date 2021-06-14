@@ -4,7 +4,8 @@ RSpec.describe Api::V1::Users::Registrations::Operation::Create do
   describe '.call' do
     subject(:operation) { described_class.call(params) }
 
-    let(:params) { { email: random_email, password: '12345678' } }
+    let(:user) { build(:user) }
+    let(:params) { { email: user.email, password: user.password, password_confirmation: user.password } }
 
     describe 'Success' do
       it 'returns saved user' do
@@ -19,7 +20,7 @@ RSpec.describe Api::V1::Users::Registrations::Operation::Create do
         let(:params) { '42' }
 
         it 'returns errors' do
-          expect(User.count).to eq(0)
+          expect { operation }.not_to change(User, :count)
           expect(operation).to be_failure
           expect(operation.failure.errors).not_to be_empty
         end

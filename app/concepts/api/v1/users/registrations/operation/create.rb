@@ -8,19 +8,12 @@ module Api::V1::Users::Registrations::Operation
     private
 
     def validate(params)
-      result = Api::V1::Users::Registrations::Contract::Validate.call(params)
-      result.errors.to_h.empty? ? Success(params) : Failure(result)
+      result = Api::V1::Users::Registrations::Contract::Create.call(params)
+      result.errors.empty? ? Success(params) : Failure(result)
     end
 
     def create(params)
-      user = User.new(email: params[:email], password: params[:password])
-      begin
-        user.save
-      rescue StandardError => error
-        Failure(error)
-      else
-        Success(user)
-      end
+      Success(User.create(email: params[:email], password: params[:password]))
     end
   end
 end
