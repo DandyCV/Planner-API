@@ -95,7 +95,7 @@ RSpec.describe Api::V1::Users::Registrations::Contract::Create do
 
         it 'validates email to have valid address' do
           expect(result).to be_failure
-          expect(result.errors.to_h[:email]).to include('is in invalid format')
+          expect(result.errors.to_h[:email]).to include(I18n.t(:email, scope: scope))
         end
       end
     end
