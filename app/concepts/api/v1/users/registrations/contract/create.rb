@@ -2,26 +2,26 @@
 
 module Api::V1::Users::Registrations::Contract
   class Create < ApplicationContract
-    VALID_EMAIL_REGEX =
-      /(?=\A.{6,255}\z)(\A([\p{L}0-9]+[\w|\-.+]*)@((?i-mx:[\p{L}0-9]+([\-.]{1}[\p{L}0-9]+)*\.\p{L}{2,63}))\z)/
+    PASSWORD_MIN_SIZE = 6
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
+    def call(params)
+      params = params.permit!.to_h if params.is_a?(ActionController::Parameters)
+      super
+    end
 
     params do
-      required(:email).filled(:string)
-      required(:password).filled(:string)
+      required(:email).filled(:string, format?: VALID_EMAIL_REGEX)
+      required(:password).filled(:string, min_size?: PASSWORD_MIN_SIZE)
       required(:password_confirmation).filled(:string)
     end
 
     rule(:email) do
-      key.failure(I18n.t('record.errors.messages.taken')) if User.exists?(email: value)
-      key.failure(I18n.t('record.errors.messages.email')) unless VALID_EMAIL_REGEX.match?(value)
-    end
-
-    rule(:password) do
-      key.failure(I18n.t('record.errors.messages.password_length')) if value.length < 6
+      key.failure(I18n.t('users.registrations.contract.create.taken')) if User.exists?(email: value)
     end
 
     rule(:password_confirmation) do
-      key.failure(I18n.t('record.errors.messages.confirmation')) if value != values[:password]
+      key.failure(I18n.t('users.registrations.contract.create.confirmation')) if value != values[:password]
     end
   end
 end

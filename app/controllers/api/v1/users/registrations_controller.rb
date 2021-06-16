@@ -3,11 +3,11 @@
 module Api::V1::Users
   class RegistrationsController < ApiController
     def create
-      Api::V1::Users::Registrations::Operation::Create.call(params.permit!.to_h) do |result|
-        result.success do |record|
+      Api::V1::Users::Registrations::Operation::Create.call(params) do |result|
+        result.success do |user|
           respond_with(
             status: 201,
-            entity: record,
+            entity: user,
             serializer: Api::V1::Users::Registrations::Serializer::Create
           )
         end

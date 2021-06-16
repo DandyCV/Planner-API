@@ -1,8 +1,7 @@
 en:
-  record:
-    errors:
-      messages:
-        taken: 'has allready been taken'
-        password_length: 'minimum length 6 symbols'
-        confirmation: 'passwords do not match'
-        email: 'do not looks like an email address'
+  users:
+    registrations:
+      contract:
+        create:
+          taken: 'has allready been taken'
+          confirmation: 'passwords do not match'
