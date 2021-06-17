@@ -60,7 +60,7 @@ RSpec.describe Api::V1::Users::Registrations::Contract::Create, type: :contract 
         it 'return object with errors' do
           allow(User).to receive(:exists?).with(email: user.email).and_return(true)
           expect(result).to be_failure
-          expect_errors(result, :email, I18n.t(:taken, scope: i18n_path))
+          expect_errors(result, [:email], I18n.t(:taken, scope: i18n_path))
         end
       end
 
@@ -71,7 +71,7 @@ RSpec.describe Api::V1::Users::Registrations::Contract::Create, type: :contract 
 
         it 'return object with errors' do
           expect(result).to be_failure
-          expect_errors(result, :password, "size cannot be less than #{min_size}")
+          expect_errors(result, [:password], "size cannot be less than #{min_size}")
         end
       end
 
@@ -80,7 +80,7 @@ RSpec.describe Api::V1::Users::Registrations::Contract::Create, type: :contract 
 
         it 'return object with errors' do
           expect(result).to be_failure
-          expect_errors(result, :password_confirmation, I18n.t(:confirmation, scope: i18n_path))
+          expect_errors(result, [:password_confirmation], I18n.t(:confirmation, scope: i18n_path))
         end
       end
 
@@ -89,7 +89,7 @@ RSpec.describe Api::V1::Users::Registrations::Contract::Create, type: :contract 
 
         it 'return object with errors' do
           expect(result).to be_failure
-          expect_errors(result, :email, I18n.t(:email, scope: i18n_path))
+          expect_errors(result, [:email], I18n.t(:email, scope: i18n_path))
         end
       end
     end
