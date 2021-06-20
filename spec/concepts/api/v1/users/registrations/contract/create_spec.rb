@@ -23,33 +23,37 @@ RSpec.describe Api::V1::Users::Registrations::Contract::Create, type: :contract 
 
   describe 'Failure' do
     describe 'with invalid credentials' do
-      context 'when missed required fields' do
-        let(:params) { {} }
+      let(:attrs) { %i[email password password_confirmation] }
 
-        it 'return contract with errors' do
-          expect_errors(result, %i[email password password_confirmation], 'is missing')
-          expect(result).to be_failure
-        end
-      end
+      it_behaves_like 'string attributes'
 
-      context 'when required fields are blank' do
-        let(:params) { { email: '', password: '', password_confirmation: '' } }
+      # context 'when missed required fields' do
+      #   let(:params) { {} }
 
-        it 'return contract with errors' do
-          expect_errors(result, %i[email password password_confirmation], 'must be filled')
-          expect(result).to be_failure
-        end
-      end
+      #   it 'return contract with errors' do
+      #     expect_errors(result, %i[email password password_confirmation], 'is missing')
+      #     expect(result).to be_failure
+      #   end
+      # end
 
-      context 'when required fields has unexpected types' do
-        let(:password) { 12_345_678 }
-        let(:params) { { email: [random_email], password: password, password_confirmation: password } }
+      # context 'when required fields are blank' do
+      #   let(:params) { { email: '', password: '', password_confirmation: '' } }
 
-        it 'return contract with errors' do
-          expect_errors(result, %i[email password password_confirmation], 'must be a string')
-          expect(result).to be_failure
-        end
-      end
+      #   it 'return contract with errors' do
+      #     expect_errors(result, %i[email password password_confirmation], 'must be filled')
+      #     expect(result).to be_failure
+      #   end
+      # end
+
+      # context 'when required fields has unexpected types' do
+      #   let(:password) { 12_345_678 }
+      #   let(:params) { { email: [random_email], password: password, password_confirmation: password } }
+
+      #   it 'return contract with errors' do
+      #     expect_errors(result, %i[email password password_confirmation], 'must be a string')
+      #     expect(result).to be_failure
+      #   end
+      # end
     end
 
     describe 'When credentials do not satisfy rules' do
