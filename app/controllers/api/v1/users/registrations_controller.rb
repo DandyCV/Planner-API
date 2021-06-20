@@ -15,7 +15,7 @@ module Api::V1::Users
         result.failure do |failure_object|
           respond_with(
             status: 422,
-            entity: failure_object.errors
+            entity: failure_object
           )
         end
       end
