@@ -4,14 +4,15 @@ RSpec.describe Api::V1::Users::Registrations::Operation::Create do
   describe '.call' do
     subject(:operation) { described_class.call(params) }
 
-    let(:user) { build(:user) }
-    let(:params) { { email: user.email, password: user.password, password_confirmation: user.password } }
+    let(:email) { random_email }
+    let(:password) { random_password }
+    let(:params) { { email: email, password: password, password_confirmation: password } }
 
     describe 'Success' do
       it 'returns saved user' do
         expect { operation }.to change(User, :count).from(0).to(1)
-        expect(operation).to be_success
         expect(operation.success).to be_an_instance_of(User)
+        expect(operation).to be_success
       end
     end
 
@@ -21,8 +22,9 @@ RSpec.describe Api::V1::Users::Registrations::Operation::Create do
 
         it 'returns errors' do
           expect { operation }.not_to change(User, :count)
-          expect(operation).to be_failure
+          expect(operation.failure).to be_an_instance_of(Dry::Validation::Result)
           expect(operation.failure.errors).not_to be_empty
+          expect(operation).to be_failure
         end
       end
     end

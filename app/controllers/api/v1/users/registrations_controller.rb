@@ -12,10 +12,10 @@ module Api::V1::Users
           )
         end
 
-        result.failure do |record|
+        result.failure do |failure_object|
           respond_with(
             status: 422,
-            entity: record.errors
+            entity: failure_object.errors
           )
         end
       end

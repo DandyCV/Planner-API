@@ -2,18 +2,18 @@
 
 module Api::V1::Users::Registrations::Operation
   class Create < ApplicationOperation
-    step :validate
-    step :create
+    step :validate_contract
+    step :create_user
 
     private
 
-    def validate(params)
-      result = Api::V1::Users::Registrations::Contract::Create.call(params)
-      result.errors.empty? ? Success(params) : Failure(result)
+    def validate_contract(params)
+      contract = Api::V1::Users::Registrations::Contract::Create.call(params)
+      contract.success? ? Success(contract) : Failure(contract)
     end
 
-    def create(params)
-      Success(User.create(email: params[:email], password: params[:password]))
+    def create_user(contract)
+      Success(User.create(email: contract.email, password: contract.password))
     end
   end
 end
