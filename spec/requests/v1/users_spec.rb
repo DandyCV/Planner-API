@@ -11,7 +11,7 @@ RSpec.describe 'Registrations', type: :request do
     describe 'Succes' do
       it 'renders user' do
         expect(response).to be_created
-        # expect(response).to match_json_schema('v1/users/registrations/create')
+        expect(response).to match_json_schema('v1/users/registrations/create/create')
       end
     end
 
