@@ -5,4 +5,4 @@ en:
         create:
           taken: 'has allready been taken'
           confirmation: 'passwords do not match'
-          email: 'do not looks like an email'
+          email: 'does not look like an email'

@@ -7,7 +7,21 @@ module Api::V1::Serializer
     end
 
     def to_json(*_args)
-      @object.is_a?(Dry::Validation::Result) ? { data: @object.to_h, errors: @object.errors.to_h } : @object
+      if @object.is_a?(Dry::Validation::Result)
+        errors = []
+        @object.errors.each do |error|
+          errors << {
+            source:
+            {
+              pointer: "/data/attributes/#{error.path.first}"
+            },
+            detail: error.text
+          }
+        end
+        { errors: errors }.to_json
+      else
+        @object
+      end
     end
   end
 end

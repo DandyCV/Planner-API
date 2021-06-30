@@ -1,12 +1,111 @@
 {
-    "data": {
-        "id": "create_user",
-        "type": "object",
-        "required": ["id", "email", "created_at"],
-        "properties": {
-            "id": { "type": "integer" },
-            "email": { "type": "string", "format": "email" },
-            "created_at": { "type": "string", "format": "date-time" }
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/registration.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "Registration response schema",
+    "default": {},
+    "examples": [
+        {
+            "data": {
+                "id": "903",
+                "type": "user",
+                "attributes": {
+                    "id": 903,
+                    "email": "vito@corkery.info",
+                    "created_at": "2021-06-29T16:49:18.101Z"
+                }
+            }
         }
-    }
+    ],
+    "required": [
+        "data"
+    ],
+    "properties": {
+        "data": {
+            "$id": "#/properties/data",
+            "type": "object",
+            "title": "The data schema",
+            "examples": [
+                {
+                    "id": "903",
+                    "type": "user",
+                    "attributes": {
+                        "id": 903,
+                        "email": "vito@corkery.info",
+                        "created_at": "2021-06-29T16:49:18.101Z"
+                    }
+                }
+            ],
+            "required": [
+                "id",
+                "type",
+                "attributes"
+            ],
+            "properties": {
+                "id": {
+                    "$id": "#/properties/data/properties/id",
+                    "type": "string",
+                    "title": "The id schema",
+                    "examples": [
+                        "903"
+                    ]
+                },
+                "type": {
+                    "$id": "#/properties/data/properties/type",
+                    "type": "string",
+                    "title": "The type schema",
+                    "examples": [
+                        "user"
+                    ]
+                },
+                "attributes": {
+                    "$id": "#/properties/data/properties/attributes",
+                    "type": "object",
+                    "title": "The attributes schema",
+                    "examples": [
+                        {
+                            "id": 903,
+                            "email": "vito@corkery.info",
+                            "created_at": "2021-06-29T16:49:18.101Z"
+                        }
+                    ],
+                    "required": [
+                        "id",
+                        "email",
+                        "created_at"
+                    ],
+                    "properties": {
+                        "id": {
+                            "$id": "#/properties/data/properties/attributes/properties/id",
+                            "type": "integer",
+                            "title": "The id schema",
+                            "examples": [
+                                903
+                            ]
+                        },
+                        "email": {
+                            "$id": "#/properties/data/properties/attributes/properties/email",
+                            "type": "string",
+                            "title": "The email schema",
+                            "examples": [
+                                "vito@corkery.info"
+                            ]
+                        },
+                        "created_at": {
+                            "$id": "#/properties/data/properties/attributes/properties/created_at",
+                            "type": "string",
+                            "title": "The created_at schema",
+                            "examples": [
+                                "2021-06-29T16:49:18.101Z"
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
 }
