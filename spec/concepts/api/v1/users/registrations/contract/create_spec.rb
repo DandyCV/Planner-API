@@ -39,7 +39,7 @@ RSpec.describe Api::V1::Users::Registrations::Contract::Create, type: :contract 
       end
 
       context 'when password is too short' do
-        let(:short_password) { password[0, min_size - 1] }
+        let(:short_password) { password[0...min_size - 1] }
         let(:params) { { email: email, password: short_password, password_confirmation: short_password } }
         let(:min_size) { Constants::Shared::PASSWORD_MIN_SIZE }
 

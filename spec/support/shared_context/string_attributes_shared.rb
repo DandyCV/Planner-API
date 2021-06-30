@@ -11,7 +11,7 @@ shared_context 'when required attributes are strings' do
   end
 
   context 'when required attributes are blank' do
-    let(:params) { (attrs.zip Array.new(attrs.size, '')).to_h }
+    let(:params) { attrs.product(['']).to_h }
 
     it 'returns failed contract with errors' do
       expect_errors(contract, attrs, 'must be filled')
@@ -20,7 +20,7 @@ shared_context 'when required attributes are strings' do
   end
 
   context 'when required attributes have wrong type' do
-    let(:params) { (attrs.zip Array.new(attrs.size, [:attr])).to_h }
+    let(:params) { attrs.product([:attr]).to_h }
 
     it 'returns failed contract with errors' do
       expect_errors(contract, attrs, 'must be a string')
