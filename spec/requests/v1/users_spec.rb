@@ -22,7 +22,7 @@ RSpec.describe 'Registrations', type: :request do
 
           it 'response 422' do
             expect(response).to be_unprocessable
-            expect(response).to match_json_schema('v1/error/error')
+            expect(response).to match_json_schema('v1/error/422')
           end
         end
       end

@@ -3,7 +3,7 @@
     "$id": "http://example.com/error.json",
     "type": "object",
     "title": "The root schema",
-    "description": "4xx error schema",
+    "description": "422 error schema",
     "examples": [
         {
             "errors": [

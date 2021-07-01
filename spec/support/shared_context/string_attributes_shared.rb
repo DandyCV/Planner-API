@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+def attrs_filler(object)
+  attrs.product([object]).to_h
+end
+
 shared_context 'when required attributes are strings' do
   context 'when required attributes are missing' do
     let(:params) { {} }
@@ -11,7 +15,7 @@ shared_context 'when required attributes are strings' do
   end
 
   context 'when required attributes are blank' do
-    let(:params) { attrs.product(['']).to_h }
+    let(:params) { attrs_filler('') }
 
     it 'returns failed contract with errors' do
       expect_errors(contract, attrs, 'must be filled')
@@ -20,7 +24,7 @@ shared_context 'when required attributes are strings' do
   end
 
   context 'when required attributes have wrong type' do
-    let(:params) { attrs.product([:attr]).to_h }
+    let(:params) { attrs_filler(:attr) }
 
     it 'returns failed contract with errors' do
       expect_errors(contract, attrs, 'must be a string')

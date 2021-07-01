@@ -5,8 +5,6 @@ module Api::V1::Users::Registrations::Operation
     step :validate_contract
     step :create_user
 
-    private
-
     def validate_contract(params)
       contract = Api::V1::Users::Registrations::Contract::Create.call(params)
       contract.success? ? Success(contract) : Failure(contract)
