@@ -84,6 +84,9 @@ Rails/FilePath:
 
 # RSpec -----------------------------------------------------------------------
 
+RSpec/AnyInstance:
+  Enabled: false
+
 RSpec/MultipleExpectations:
   Enabled: false
 
@@ -158,6 +161,9 @@ Lint/SymbolConversion:
 
 Lint/ToEnumArguments:
   Enabled: true
+
+Lint/ToJSON:
+  Enabled: false
 
 Lint/TripleQuotes:
   Enabled: true

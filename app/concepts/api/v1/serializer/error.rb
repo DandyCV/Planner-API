@@ -6,18 +6,21 @@ module Api::V1::Serializer
       @object = object
     end
 
-    def to_json(*_args)
-      errors = []
-      @object.errors.each do |error|
-        errors << {
-          source:
-          {
-            pointer: "/data/attributes/#{error.path.first}"
-          },
+    def to_json
+      { errors: errors }.to_json
+    end
+
+    private
+
+    attr_reader :object
+
+    def errors
+      @errors ||= @object.errors.map do |error|
+        {
+          source: { pointer: "/data/attributes/#{error.path.first}" },
           detail: error.text
         }
       end
-      { errors: errors }.to_json
     end
   end
 end

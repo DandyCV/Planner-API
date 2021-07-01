@@ -1,15 +1,30 @@
 # frozen_string_literal: true
 
 RSpec.describe Api::V1::Serializer::Error do
-  let(:error_class) { class_double('TestErrorClass') }
-  let(:error_class_instance) do
-    instance_double('TestErrorClassInstance', path: [:some_attr], text: 'some message')
-  end
-  let(:serialized_class) { class_double('TestSerializedClass') }
-  let(:serialized_class_instance) { instance_double('TestSerializerInstance', errors: [error_class_instance]) }
-  let(:serialized_object) { described_class.new(serialized_class_instance).to_json }
+  describe '#to_json' do
+    subject(:error_serializer) { described_class.new(object).to_json }
 
-  it 'serializes object with errors' do
-    expect(serialized_object).to match_json_schema('v1/error/422')
+    let(:object) { instance_double('SerializableObject', errors: [error_object]) }
+    let(:error_object) { instance_double('ErrorleObject', path: [pointer], text: detail) }
+    let(:pointer) { :some_pointer }
+    let(:detail) { 'some detail' }
+
+    it 'uses memoized errors' do
+      expect_any_instance_of(described_class).to receive(:errors).once.and_call_original
+      2.times { error_serializer }
+    end
+
+    it 'returns errors as serialized json with jsonapi specification' do
+      expect(JSON.parse(error_serializer)).to eq(
+        {
+          'errors' => [
+            {
+              'source' => { 'pointer' => "/data/attributes/#{pointer}" },
+              'detail' => detail
+            }
+          ]
+        }
+      )
+    end
   end
 end
