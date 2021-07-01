@@ -3,7 +3,7 @@
 RSpec.describe Api::V1::Serializer::Error do
   let(:error_class) { class_double('TestErrorClass') }
   let(:error_class_instance) do
-    instance_double('TestErrorClassInstance', path: [:email], text: I18n.t('users.registrations.contract.create.taken'))
+    instance_double('TestErrorClassInstance', path: [:some_attr], text: 'some message')
   end
   let(:serialized_class) { class_double('TestSerializedClass') }
   let(:serialized_class_instance) { instance_double('TestSerializerInstance', errors: [error_class_instance]) }
