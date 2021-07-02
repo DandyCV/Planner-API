@@ -1,0 +1,98 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/error.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "422 error schema",
+    "examples": [
+        {
+            "errors": [
+                {
+                    "source": {
+                        "pointer": "/data/attributes/email"
+                    },
+                    "detail": "do not looks like an email"
+                }
+            ]
+        }
+    ],
+    "required": [
+        "errors"
+    ],
+    "properties": {
+        "errors": {
+            "$id": "#/properties/errors",
+            "type": "array",
+            "title": "The errors schema",
+            "examples": [
+                [
+                    {
+                        "source": {
+                            "pointer": "/data/attributes/email"
+                        },
+                        "detail": "do not looks like an email"
+                    }
+                ]
+            ],
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/errors/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/errors/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "examples": [
+                            {
+                                "source": {
+                                    "pointer": "/data/attributes/email"
+                                },
+                                "detail": "do not looks like an email"
+                            }
+                        ],
+                        "required": [
+                            "source",
+                            "detail"
+                        ],
+                        "properties": {
+                            "source": {
+                                "$id": "#/properties/errors/items/anyOf/0/properties/source",
+                                "type": "object",
+                                "title": "The source schema",
+                                "examples": [
+                                    {
+                                        "pointer": "/data/attributes/email"
+                                    }
+                                ],
+                                "required": [
+                                    "pointer"
+                                ],
+                                "properties": {
+                                    "pointer": {
+                                        "$id": "#/properties/errors/items/anyOf/0/properties/source/properties/pointer",
+                                        "type": "string",
+                                        "title": "The pointer schema",
+                                        "examples": [
+                                            "/data/attributes/email"
+                                        ]
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            "detail": {
+                                "$id": "#/properties/errors/items/anyOf/0/properties/detail",
+                                "type": "string",
+                                "title": "The detail schema",
+                                "examples": [
+                                    "do not looks like an email"
+                                ]
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": false
+}

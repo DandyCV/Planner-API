@@ -2,5 +2,17 @@ detectors:
   IrresponsibleModule:
     enabled: false
 
+  UncommunicativeModuleName:
+    enabled: false
+
+  NestedIterators:
+    enabled: false
+
+  FeatureEnvy:
+    enabled: false
+
+  TooManyStatements:
+    max_statements: 6
+
 exclude_paths:
   - db/

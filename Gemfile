@@ -12,7 +12,15 @@ gem 'pg', '~> 1.1'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+# Fast JSON:API serializer for Ruby Objects
+gem 'jsonapi-serializer', '~> 2.2.0'
+# Business transaction DSL
+gem 'dry-transaction', '~> 0.13.3'
+# Data validation library that provides a powerful DSL for defining schemas and validation rules
+gem 'dry-validation', '~> 1.6.0'
+# Ruby email validator
+gem 'truemail', '~> 2.4.3'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'

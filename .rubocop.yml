@@ -25,6 +25,9 @@ Style/ParallelAssignment:
 Style/DoubleNegation:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Naming/RescuedExceptionsVariableName:
   Enabled: false
 
@@ -32,6 +35,9 @@ Naming/RescuedExceptionsVariableName:
 
 Metrics/LineLength:
   Max: 120
+
+Metrics/MethodLength:
+  Max: 20
 
 Metrics/BlockLength:
   Exclude:
@@ -78,8 +84,14 @@ Rails/FilePath:
 
 # RSpec -----------------------------------------------------------------------
 
+RSpec/AnyInstance:
+  Enabled: false
+
 RSpec/MultipleExpectations:
   Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 7
 
 RSpec/ExampleLength:
   Max: 10
@@ -94,6 +106,9 @@ RSpec/NestedGroups:
   Max: 5
 
 RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/StubbedMock:
   Enabled: false
 
 RSpec/InstanceVariable:
@@ -121,7 +136,7 @@ Lint/DuplicateRegexpCharacterClassElement:
   Enabled: true
 
 Lint/EmptyBlock:
-  Enabled: true
+  Enabled: false
 
 Lint/EmptyClass:
   Enabled: true
@@ -146,6 +161,9 @@ Lint/SymbolConversion:
 
 Lint/ToEnumArguments:
   Enabled: true
+
+Lint/ToJSON:
+  Enabled: false
 
 Lint/TripleQuotes:
   Enabled: true

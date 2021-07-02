@@ -2,6 +2,6 @@
 
 require 'rails_helper'
 
-RSpec.describe ApplicationController, type: :controller do
+RSpec.describe ApiController, type: :controller do
   it { expect(described_class).to be < ActionController::API }
 end
