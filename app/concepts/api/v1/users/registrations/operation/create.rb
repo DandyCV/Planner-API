@@ -2,8 +2,6 @@
 
 module Api::V1::Users::Registrations::Operation
   class Create < ApplicationOperation
-    include Token
-
     step :validate_contract
     step :create_user
     step :send_email
