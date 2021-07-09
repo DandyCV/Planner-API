@@ -2,7 +2,6 @@
 
 class ApplicationOperation
   include Dry::Transaction
-  include Token
 
   def self.call(params, &block)
     new.call(params, &block)

@@ -4,6 +4,7 @@ module Api::V1::Users::Registrations::Operation
   class Create < ApplicationOperation
     step :validate_contract
     step :create_user
+    step :create_email_token
     step :send_email
 
     def validate_contract(params)
@@ -12,18 +13,25 @@ module Api::V1::Users::Registrations::Operation
     end
 
     def create_user(contract)
-      Success(User.create(email: contract.email, password: contract.password))
+      Success({ user: User.create(email: contract.email, password: contract.password) })
     end
 
-    def send_email(contract)
-      # payload = {
-      #   id: contract.id,
-      #   email: contract.email,
-      #   time_stamp: contract.created_at
-      # }
-      # token = encode(payload)
-      # send_an_email(token)
-      Success(contract)
+    def create_email_token(ctx)
+      user = ctx[:user]
+      Success(
+        ctx.merge(
+          email_token: Api::V1::Lib::Service::EmailToken.encode(
+            id: user.id,
+            email: user.email,
+            created_at: user.created_at
+          )
+        )
+      )
+    end
+
+    def send_email(ctx)
+      # Api::V1::Lib::Service::Mailer.send_email(ctx[:email_token])
+      Success(ctx[:user])
     end
   end
 end
