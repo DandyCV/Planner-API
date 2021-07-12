@@ -10,8 +10,8 @@ RSpec.describe Api::V1::Lib::Service::EmailToken do
     stub_const("#{described_class}::HMAC", hmac)
   end
 
-  it { expect(defined?(described_class::HMAC_SECRET)).to eq('constant') }
-  it { expect(defined?(described_class::HMAC)).to eq('constant') }
+  it { expect(described_class).to be_const_defined(:HMAC_SECRET) }
+  it { expect(described_class).to be_const_defined(:HMAC) }
 
   describe '#encode' do
     it 'creates email token' do
