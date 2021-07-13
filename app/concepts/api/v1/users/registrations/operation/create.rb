@@ -30,8 +30,9 @@ module Api::V1::Users::Registrations::Operation
     end
 
     def send_email(ctx)
-      # Api::V1::Lib::Service::Mailer.send_email(ctx[:email_token])
-      Success(ctx[:user])
+      user = ctx[:user]
+      RegistrationMailer.with(user: user, email_token: ctx[:email_token]).confirmation_email.deliver_later
+      Success(user)
     end
   end
 end
