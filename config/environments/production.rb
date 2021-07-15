@@ -95,14 +95,18 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.hosts = [
+    ENV['HOSTNAME']
+  ]
+
+  config.action_mailer.default_url_options = { host: config.hosts.first, port: 3000 }
 
   config.action_mailer.smtp_settings = {
-    :address              => 'smtp.gmail.com',
-    :port                 => 587,
+    :address              => ENV['smtp_address'],
+    :port                 => ENV['smtp_port'],
     :user_name            => Rails.application.credentials.email[:login],
     :password             => Rails.application.credentials.email[:password],
-    :authentication       => 'plain',
+    :authentication       => ENV['smtp_authentication'],
     :enable_starttls_auto => true
   }
 end

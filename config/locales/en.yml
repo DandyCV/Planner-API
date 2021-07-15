@@ -6,7 +6,3 @@ en:
           taken: 'has allready been taken'
           confirmation: 'passwords do not match'
           email: 'does not look like an email'
-    confirmations:
-      contract:
-        index:
-          blocks: 'invalid format'

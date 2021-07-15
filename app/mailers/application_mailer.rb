@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
-  default from: 'planner.api.mailer@gmail.com'
+  default from: Constants::Shared::EMAIL_ADDRESS
   layout 'mailer'
 end
