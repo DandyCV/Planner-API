@@ -48,9 +48,10 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
-  config.hosts = [
-    'www.example.com'
-  ]
 
-  config.action_mailer.default_url_options = { host: config.hosts.first, port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  config.user_confirmation_path = "api/v1/users/confirmation"
+
+  config.default_sender_email = 'no-reply@localhost'
 end

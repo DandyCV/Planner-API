@@ -40,8 +40,6 @@ group :development, :test do
   gem 'pry-byebug', '~> 3.9'
   # Causes rails console to open pry
   gem 'pry-rails', '~> 0.3.9'
-  # Shim to load environment variables from .env into ENV in development
-  gem 'dotenv-rails', '~> 2.7.6'
 
   # Code quality
   # Help you increase your application performance by reducing the number of queries it makes

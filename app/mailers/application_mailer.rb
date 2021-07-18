@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
-  default from: Constants::Shared::EMAIL_ADDRESS
+  default from: Rails.application.config.default_sender_email
   layout 'mailer'
 end

@@ -4,25 +4,17 @@ RSpec.describe RegistrationMailer, type: :mailer do
   it { expect(described_class).to be < ApplicationMailer }
 
   describe '#confirmation email' do
-    let(:subject) do
-      described_class.with(user: user, email_token: email_token).confirmation_email
-    end
+    subject(:mailer) { described_class.confirmation_email(email, token, path) }
 
-    let(:email_token) { 'email_token' }
-    let(:user) { build(:user) }
-    let(:email_subject) { 'Planner-API user registration' }
-    let(:host) { Rails.application.config.hosts.first }
-    let(:url) { "http://#{host}/api/v1/users/confirmation?email_token=#{email_token}" }
+    let(:email) { random_email }
+    let(:token) { random_token }
+    let(:path) { random_path }
 
-    it 'renders the headers' do
-      expect(subject.subject).to eq(email_subject)
-      expect(subject.to).to eq([user.email])
-      expect(subject.from).to eq([Constants::Shared::EMAIL_ADDRESS])
-    end
-
-    it 'renders the body' do
-      expect(subject.body.encoded).to include(user.email)
-      expect(subject.body.encoded).to include(url)
+    it 'includes confirmation data' do
+      expect(subject.to).to eq([email])
+      expect(subject.from).to eq([Rails.configuration.default_sender_email])
+      expect(subject.subject).to eq(I18n.t('user_mailer.confirmation.subject'))
+      expect(mailer.body.encoded).to include(URI.parse("#{path}?email_token=#{token}").to_s)
     end
   end
 end

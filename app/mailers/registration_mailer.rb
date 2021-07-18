@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class RegistrationMailer < ApplicationMailer
-  def confirmation_email
-    user = params[:user]
-    @user = user
-    @url = "http://#{Rails.application.config.hosts.first}/api/v1/users/confirmation?email_token=#{params[:email_token]}"
-    mail(to: user.email, subject: 'Planner-API user registration')
+  def confirmation_email(email, token, path)
+    @email = email
+    @confiramtion_url = URI.parse("#{path}?email_token=#{token}").to_s
+    mail(to: email, subject: I18n.t('user_mailer.confirmation.subject'))
   end
 end
