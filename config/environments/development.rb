@@ -61,12 +61,6 @@ Rails.application.configure do
 
   config.default_sender_email = 'no-reply@localhost'
 
-  config.action_mailer.smtp_settings = {
-    :address              => 'smtp.gmail.com',
-    :port                 => 587,
-    :user_name            => Rails.application.credentials.email[:login],
-    :password             => Rails.application.credentials.email[:password],
-    :authentication       => 'palin',
-    :enable_starttls_auto => true
-  }
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
 end
