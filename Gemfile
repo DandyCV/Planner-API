@@ -21,6 +21,8 @@ gem 'dry-transaction', '~> 0.13.3'
 gem 'dry-validation', '~> 1.6.0'
 # Ruby email validator
 gem 'truemail', '~> 2.4.3'
+# A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard
+gem 'jwt', '~> 2.2.3'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
@@ -62,6 +64,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener', '~> 1.7.0'
   gem 'listen', '~> 3.3'
 end
 

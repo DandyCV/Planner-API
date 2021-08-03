@@ -30,4 +30,7 @@
 # Rspec data
 /spec/examples.txt
 
+# Master key
+/config/master.key
+
 .DS_Store

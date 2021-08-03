@@ -10,4 +10,12 @@ module ContextHelper
   def random_password
     Faker::Internet.password
   end
+
+  def random_token
+    Faker::Internet.password(min_length: 55, max_length: 80)
+  end
+
+  def random_path
+    Faker::Internet.url(host: 'example.com')
+  end
 end

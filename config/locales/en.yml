@@ -6,3 +6,6 @@ en:
           taken: 'has allready been taken'
           confirmation: 'passwords do not match'
           email: 'does not look like an email'
+  user_mailer:
+    confirmation:
+      subject: 'Planner-API user registration'
