@@ -6,6 +6,11 @@ en:
           taken: 'has allready been taken'
           confirmation: 'passwords do not match'
           email: 'does not look like an email'
+    confirmations:
+      token:
+        invalid: 'invalid token'
+        data: 'invalid user data'
+        expired: 'token is expired'
   user_mailer:
-    confirmation:
+    confirmation: 
       subject: 'Planner-API user registration'
