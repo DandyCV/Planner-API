@@ -10,7 +10,7 @@ RSpec.describe 'Confirmations', type: :request do
     before { get "/api/v1/users/confirmation?email_token=#{email_token}", as: :json }
 
     describe 'Succes' do
-      it 'renders user' do
+      it 'renders OK' do
         expect(response).to be_ok
         expect(JSON.parse(response.body)).to be_empty
         expect(User.find(user.id)).to be_confirmed
@@ -24,7 +24,7 @@ RSpec.describe 'Confirmations', type: :request do
         context 'when token can not be processed' do
           let(:email_token) { 'this.is.token' }
 
-          it 'returns invalid token error' do
+          it 'renders invalid token error' do
             expect(response).to be_unprocessable
             expect(response).to match_json_schema('v1/error/422')
             expect(response.body).to include(I18n.t('users.confirmations.token.invalid'))
@@ -40,7 +40,7 @@ RSpec.describe 'Confirmations', type: :request do
             }
           end
 
-          it 'returns expired token error' do
+          it 'renders expired token error' do
             expect(response).to be_unprocessable
             expect(response).to match_json_schema('v1/error/422')
             expect(response.body).to include(I18n.t('users.confirmations.token.expired'))
@@ -56,7 +56,7 @@ RSpec.describe 'Confirmations', type: :request do
             }
           end
 
-          it 'returns invalid user data error' do
+          it 'renders invalid user data error' do
             expect(response).to be_unprocessable
             expect(response).to match_json_schema('v1/error/422')
             expect(response.body).to include(I18n.t('users.confirmations.token.data'))
