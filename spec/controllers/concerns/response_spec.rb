@@ -16,10 +16,15 @@ RSpec.describe Response do
     let(:serializer_class) { Api::V1::Serializer::Error }
 
     context 'with default params' do
-      it 'calls render with default params' do
+      it 'calls render with default status & serializer' do
         allow(serializer_class).to receive(:new).with(entity).and_return(entity)
         expect(test_class_instance).to receive(:render).with(json: entity.to_json, status: 200)
         respond_with
+      end
+
+      it 'calls render with default entity' do
+        expect(test_class_instance).to receive(:render).with(json: {}, status: 200)
+        test_class_instance.respond_with
       end
     end
 

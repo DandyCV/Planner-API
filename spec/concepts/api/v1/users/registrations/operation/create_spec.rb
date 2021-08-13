@@ -10,7 +10,7 @@ RSpec.describe Api::V1::Users::Registrations::Operation::Create do
 
     describe 'Success' do
       it 'returns saved user' do
-        expect { operation }.to change(User, :count).from(0).to(1)
+        expect { operation }.to change(User, :count)
         expect(operation.success).to be_an_instance_of(User)
         expect(operation).to be_success
         operation

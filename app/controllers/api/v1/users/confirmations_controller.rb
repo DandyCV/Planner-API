@@ -2,14 +2,10 @@
 
 module Api::V1::Users
   class ConfirmationsController < ApiController
-    def create
+    def show
       Api::V1::Users::Confirmations::Operation::Confirm.call(params) do |result|
-        result.success do |user|
-          respond_with(
-            status: 204,
-            entity: user,
-            serializer: Api::V1::Users::Confirmations::Serializer::Confirm
-          )
+        result.success do
+          respond_with(status: 200)
         end
 
         result.failure do |failure_object|
