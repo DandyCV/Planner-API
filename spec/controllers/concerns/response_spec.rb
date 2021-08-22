@@ -9,6 +9,7 @@ RSpec.describe Response do
         include Response
 
         define_method(:render) { |_| }
+        define_method(:head) { |_| }
       end.new
     end
     let(:entity) { { a: 1 } }
@@ -23,7 +24,7 @@ RSpec.describe Response do
       end
 
       it 'calls render with default entity' do
-        expect(test_class_instance).to receive(:render).with(json: {}, status: 200)
+        expect(test_class_instance).to receive(:head).with(200)
         test_class_instance.respond_with
       end
     end

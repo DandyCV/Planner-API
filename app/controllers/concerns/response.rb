@@ -5,7 +5,7 @@ module Response
     if entity
       render json: serializer.new(entity).to_json, status: status
     else
-      render json: {}, status: status
+      head(status)
     end
   end
 end
