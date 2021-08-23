@@ -8,7 +8,7 @@ RSpec.describe Api::V1::Serializer::Error do
     let(:error_object) { instance_double('ErrorleObject', path: [pointer], text: detail) }
     let(:pointer) { :some_pointer }
     let(:detail) { 'some detail' }
-    let(:json_schema) do
+    let(:error_hash) do
       {
         'errors' => [
           {
@@ -26,7 +26,7 @@ RSpec.describe Api::V1::Serializer::Error do
       end
 
       it 'returns errors as serialized json with jsonapi specification' do
-        expect(JSON.parse(error_serializer)).to eq(json_schema)
+        expect(JSON.parse(error_serializer)).to eq(error_hash)
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.describe Api::V1::Serializer::Error do
       let(:object) { { errors: [{ pointer => detail }] } }
 
       it 'returns errors as serialized json with jsonapi specification' do
-        expect(JSON.parse(error_serializer)).to eq(json_schema)
+        expect(JSON.parse(error_serializer)).to eq(error_hash)
       end
     end
   end

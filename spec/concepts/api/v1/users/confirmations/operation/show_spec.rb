@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
-RSpec.describe Api::V1::Users::Confirmations::Operation::Confirm do
+RSpec.describe Api::V1::Users::Confirmations::Operation::Show do
   describe '.call' do
     subject(:operation) { described_class.call(params) }
 
     let(:user) { create(:user) }
     let(:user_data) { { id: user.id, email: user.email, created_at: user.created_at } }
-    let(:email_token) { Api::V1::Lib::Service::EmailToken.encode(user_data) }
+    let(:email_token) { generate_token(user_data) }
     let(:params) { { email_token: email_token } }
 
     describe 'Success' do
       it 'returns updated user' do
         expect(operation.success).to eq(true)
         expect(operation).to be_success
-        expect(User.find(user.id)).to be_confirmed
+        expect(user.reload).to be_confirmed
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe Api::V1::Users::Confirmations::Operation::Confirm do
         it 'returns errors' do
           expect(operation.failure).to be_an_instance_of(::Hash)
           expect(operation.failure[:errors]).to include({ token: I18n.t('users.confirmations.token.invalid') })
-          expect(User.find(user.id)).not_to be_confirmed
+          expect(user.reload).not_to be_confirmed
           expect(operation).to be_failure
         end
       end
@@ -41,7 +41,7 @@ RSpec.describe Api::V1::Users::Confirmations::Operation::Confirm do
         it 'returns errors' do
           expect(operation.failure).to be_an_instance_of(::Hash)
           expect(operation.failure[:errors]).to include({ token: I18n.t('users.confirmations.token.expired') })
-          expect(User.find(user.id)).not_to be_confirmed
+          expect(user.reload).not_to be_confirmed
           expect(operation).to be_failure
         end
       end
@@ -58,7 +58,7 @@ RSpec.describe Api::V1::Users::Confirmations::Operation::Confirm do
         it 'returns errors' do
           expect(operation.failure).to be_an_instance_of(::Hash)
           expect(operation.failure[:errors]).to include({ token: I18n.t('users.confirmations.token.data') })
-          expect(User.find(user.id)).not_to be_confirmed
+          expect(user.reload).not_to be_confirmed
           expect(operation).to be_failure
         end
       end

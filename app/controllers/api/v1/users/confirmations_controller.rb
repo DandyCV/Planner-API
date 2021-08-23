@@ -3,7 +3,7 @@
 module Api::V1::Users
   class ConfirmationsController < ApiController
     def show
-      Api::V1::Users::Confirmations::Operation::Confirm.call(params) do |result|
+      Api::V1::Users::Confirmations::Operation::Show.call(params) do |result|
         result.success do
           respond_with(status: 200)
         end

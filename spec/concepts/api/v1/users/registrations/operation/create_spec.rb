@@ -9,8 +9,17 @@ RSpec.describe Api::V1::Users::Registrations::Operation::Create do
     let(:params) { { email: email, password: password, password_confirmation: password } }
 
     describe 'Success' do
+      it 'generates email token' do
+        expect(Api::V1::Lib::Service::EmailToken).to receive(:encode)
+        operation
+      end
+
+      it 'mailer creates a new job' do
+        expect { operation }.to have_enqueued_job
+      end
+
       it 'returns saved user' do
-        expect { operation }.to change(User, :count)
+        expect { operation }.to change(User, :count).from(0).to(1)
         expect(operation.success).to be_an_instance_of(User)
         expect(operation).to be_success
         operation

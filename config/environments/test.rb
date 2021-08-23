@@ -54,4 +54,6 @@ Rails.application.configure do
   config.user_confirmation_path = "api/v1/users/confirmation"
 
   config.default_sender_email = 'no-reply@localhost'
+
+  config.active_job.queue_adapter = :test
 end

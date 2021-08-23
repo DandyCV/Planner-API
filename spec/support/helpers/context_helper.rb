@@ -18,4 +18,8 @@ module ContextHelper
   def random_path
     Faker::Internet.url(host: 'example.com')
   end
+
+  def generate_token(user_data)
+    Api::V1::Lib::Service::EmailToken.encode(user_data)
+  end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Api::V1::Users::Confirmations::Operation
-  class Confirm < ApplicationOperation
+  class Show < ApplicationOperation
     step :decode_token
     step :validate_token
     step :validate_user
@@ -16,11 +16,10 @@ module Api::V1::Users::Confirmations::Operation
     end
 
     def validate_token(data)
-      if (DateTime.now - Constants::Shared::VALID_TOKEN_TIME) < DateTime.parse(data['created_at'])
-        Success(data)
-      else
-        Failure({ errors: [{ token: I18n.t('users.confirmations.token.expired') }] })
-      end
+      token_expired = DateTime.parse(data['created_at']) < (DateTime.now - Constants::Shared::VALID_TOKEN_TIME)
+      return Success(data) unless token_expired
+
+      Failure({ errors: [{ token: I18n.t('users.confirmations.token.expired') }] })
     end
 
     def validate_user(data)

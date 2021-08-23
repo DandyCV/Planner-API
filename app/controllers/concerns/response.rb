@@ -2,10 +2,8 @@
 
 module Response
   def respond_with(entity: nil, status: 200, serializer: Api::V1::Serializer::Error)
-    if entity
-      render json: serializer.new(entity).to_json, status: status
-    else
-      head(status)
-    end
+    return head(status) unless entity
+
+    render json: serializer.new(entity).to_json, status: status
   end
 end

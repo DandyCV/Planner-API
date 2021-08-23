@@ -3,7 +3,7 @@
 RSpec.describe 'Confirmations', type: :request do
   let(:user) { create(:user) }
   let(:user_data) { { id: user.id, email: user.email, created_at: user.created_at } }
-  let(:email_token) { Api::V1::Lib::Service::EmailToken.encode(user_data) }
+  let(:email_token) { generate_token(user_data) }
   let(:params) { { email_token: email_token } }
 
   describe 'GET /api/v1/users/confirmation' do
