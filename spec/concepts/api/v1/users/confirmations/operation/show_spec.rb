@@ -9,6 +9,8 @@ RSpec.describe Api::V1::Users::Confirmations::Operation::Show do
     let(:email_token) { generate_token(user_data) }
     let(:params) { { email_token: email_token } }
 
+    before { stub_const('Api::V1::Lib::Service::EmailToken::HMAC_SECRET', 'test123456') }
+
     describe 'Success' do
       it 'returns updated user' do
         expect(operation.success).to eq(true)
