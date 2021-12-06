@@ -5,6 +5,8 @@ RSpec.describe 'Confirmations', type: :request do
   let(:user_data) { { id: user.id, email: user.email, created_at: user.created_at } }
   let(:email_token) { generate_token(user_data) }
 
+  before { stub_const('Api::V1::Lib::Service::EmailToken::HMAC_SECRET', 'test123456') }
+
   describe 'GET /api/v1/users/confirmation' do
     before { get "/api/v1/users/confirmation?email_token=#{email_token}", as: :json }
 
