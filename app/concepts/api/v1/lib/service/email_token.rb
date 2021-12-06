@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Api::V1::Lib::Service::EmailToken
-  HMAC_SECRET = Rails.application.credentials.secret_key_base
+  HMAC_SECRET = "test123456"
   HMAC = 'HS256'
 
   class << self
