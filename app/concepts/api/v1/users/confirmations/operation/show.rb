@@ -8,7 +8,6 @@ module Api::V1::Users::Confirmations::Operation
     step :update_user
 
     def decode_token(params)
-      puts params[:email_token]
       data = Api::V1::Lib::Service::EmailToken.decode(params[:email_token])
     rescue JWT::DecodeError
       Failure({ errors: [{ token: I18n.t('users.confirmations.token.invalid') }] })
