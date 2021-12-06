@@ -10,6 +10,7 @@ module Api::V1::Lib::Service::EmailToken
     end
 
     def decode(email_token)
+      puts "SECRET = #{Rails.application.credentials.secret_key_base}"
       JWT.decode(email_token, HMAC_SECRET, true, { algorithm: HMAC })
     end
   end
