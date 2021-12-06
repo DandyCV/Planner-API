@@ -4,15 +4,12 @@ RSpec.describe 'Confirmations', type: :request do
   let(:user) { create(:user) }
   let(:user_data) { { id: user.id, email: user.email, created_at: user.created_at } }
   let(:email_token) { generate_token(user_data) }
-  let(:params) { { email_token: email_token } }
 
   describe 'GET /api/v1/users/confirmation' do
     before { get "/api/v1/users/confirmation?email_token=#{email_token}", as: :json }
 
     describe 'Succes' do
       it 'renders OK' do
-        puts response.status
-        puts response.body
         expect(response).to be_ok
         expect(response.body).to be_empty
       end
