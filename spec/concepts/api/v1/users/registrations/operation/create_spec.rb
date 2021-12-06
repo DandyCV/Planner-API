@@ -7,6 +7,7 @@ RSpec.describe Api::V1::Users::Registrations::Operation::Create do
     let(:email) { random_email }
     let(:password) { random_password }
     let(:params) { { email: email, password: password, password_confirmation: password } }
+    let(:message_delivery) { instance_double(ActionMailer::MessageDelivery) }
 
     describe 'Success' do
       it 'generates email token' do
@@ -14,8 +15,10 @@ RSpec.describe Api::V1::Users::Registrations::Operation::Create do
         operation
       end
 
-      it 'mailer creates a new job' do
-        expect { operation }.to have_enqueued_job
+      it 'calls mailer' do
+        expect(RegistrationMailer).to receive(:confirmation_email).and_return(message_delivery)
+        allow(message_delivery).to receive(:deliver_later)
+        operation
       end
 
       it 'returns saved user' do

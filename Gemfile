@@ -23,6 +23,10 @@ gem 'dry-validation', '~> 1.6.0'
 gem 'truemail', '~> 2.4.3'
 # A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard
 gem 'jwt', '~> 2.2.3'
+# A Ruby client library for Redis
+gem 'redis', '~> 4.4.0'
+# Simple, efficient background processing
+gem 'sidekiq', '~> 6.2.2'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
@@ -79,6 +83,8 @@ group :test do
   gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
   # Inspects files in a git diff and warns on changed methods, classes and blocks which need to be tested
   gem 'undercover', '~> 0.4.3', require: false
+  # Simple testing of Sidekiq jobs via a collection of matchers and helpers
+  gem 'rspec-sidekiq', '~> 3.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

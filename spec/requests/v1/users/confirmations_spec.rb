@@ -11,6 +11,8 @@ RSpec.describe 'Confirmations', type: :request do
 
     describe 'Succes' do
       it 'renders OK' do
+        puts response.status
+        puts response.body
         expect(response).to be_ok
         expect(response.body).to be_empty
       end
