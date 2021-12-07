@@ -15,11 +15,20 @@ module Api::V1::Serializer
     attr_reader :object
 
     def errors
-      @errors ||= @object.errors.map do |error|
-        {
-          source: { pointer: "/data/attributes/#{error.path.first}" },
-          detail: error.text
-        }
+      if @object.is_a?(::Hash)
+        @object[:errors].map do |error|
+          {
+            source: { pointer: "/data/attributes/#{error.keys.first}" },
+            detail: error.values.first
+          }
+        end
+      else
+        @errors ||= @object.errors.map do |error|
+          {
+            source: { pointer: "/data/attributes/#{error.path.first}" },
+            detail: error.text
+          }
+        end
       end
     end
   end

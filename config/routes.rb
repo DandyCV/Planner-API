@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :users do
         resource :registration, only: :create
+        resource :confirmation, only: :show
       end
     end
   end

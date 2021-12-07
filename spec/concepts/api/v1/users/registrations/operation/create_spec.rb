@@ -7,8 +7,20 @@ RSpec.describe Api::V1::Users::Registrations::Operation::Create do
     let(:email) { random_email }
     let(:password) { random_password }
     let(:params) { { email: email, password: password, password_confirmation: password } }
+    let(:message_delivery) { instance_double(ActionMailer::MessageDelivery) }
 
     describe 'Success' do
+      it 'generates email token' do
+        expect(Api::V1::Lib::Service::EmailToken).to receive(:encode)
+        operation
+      end
+
+      it 'calls mailer' do
+        expect(RegistrationMailer).to receive(:confirmation_email).and_return(message_delivery)
+        allow(message_delivery).to receive(:deliver_later)
+        operation
+      end
+
       it 'returns saved user' do
         expect { operation }.to change(User, :count).from(0).to(1)
         expect(operation.success).to be_an_instance_of(User)
