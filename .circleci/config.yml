@@ -12,6 +12,8 @@ defaults: &defaults
         POSTGRES_USER: root
         POSTGRES_PASSWORD: circle_test
 
+    - image: redis
+
 references:
   install_bundler: &install_bundler
     run:
