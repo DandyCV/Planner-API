@@ -1,0 +1,112 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "Authentication response schema",
+    "examples": [
+        {
+            "data": {
+                "attributes": {
+                    "csrf": "IY3VK5X9ktwm1oC+WGJlWL81YxYgKPVAhAJwo0tqDK3k2pygp1+OXJHiqSWAzoIdr9Y+smNO+dCX78vHOInDVA==",
+                    "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzg5ODg4MDcsInVzZXJfaWQiOjQwOCwidWlkIjoiNWQ0MmFkMDEtMjJhYi00NjBmLWFmNjUtYTgzNGU2YzY2OTZjIn0.3k_iOZF9YXMDbaOsVJSXCWK6xS-B2hml5WbVQ79vr98",
+                    "access_expires_at": "2021-12-08T20:40:07.000+02:00",
+                    "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzk1OTAwMDcsInVpZCI6IjBhNTUxYWFhLTBkNzUtNDM5YS1hZjkzLThlYWU1NDM2MjJjYiJ9.Q0EQmSwYZb_p1GM30I6zDGdwW__gRgpRA65B6H6ursg",
+                    "refresh_expires_at": "2021-12-15T19:40:07.000+02:00"
+                }
+            }
+        }
+    ],
+    "required": [
+        "data"
+    ],
+    "properties": {
+        "data": {
+            "$id": "#/properties/data",
+            "type": "object",
+            "title": "The data schema",
+            "examples": [
+                {
+                    "attributes": {
+                        "csrf": "IY3VK5X9ktwm1oC+WGJlWL81YxYgKPVAhAJwo0tqDK3k2pygp1+OXJHiqSWAzoIdr9Y+smNO+dCX78vHOInDVA==",
+                        "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzg5ODg4MDcsInVzZXJfaWQiOjQwOCwidWlkIjoiNWQ0MmFkMDEtMjJhYi00NjBmLWFmNjUtYTgzNGU2YzY2OTZjIn0.3k_iOZF9YXMDbaOsVJSXCWK6xS-B2hml5WbVQ79vr98",
+                        "access_expires_at": "2021-12-08T20:40:07.000+02:00",
+                        "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzk1OTAwMDcsInVpZCI6IjBhNTUxYWFhLTBkNzUtNDM5YS1hZjkzLThlYWU1NDM2MjJjYiJ9.Q0EQmSwYZb_p1GM30I6zDGdwW__gRgpRA65B6H6ursg",
+                        "refresh_expires_at": "2021-12-15T19:40:07.000+02:00"
+                    }
+                }
+            ],
+            "required": [
+                "attributes"
+            ],
+            "properties": {
+                "attributes": {
+                    "$id": "#/properties/data/properties/attributes",
+                    "type": "object",
+                    "title": "The attributes schema",
+                    "examples": [
+                        {
+                            "csrf": "IY3VK5X9ktwm1oC+WGJlWL81YxYgKPVAhAJwo0tqDK3k2pygp1+OXJHiqSWAzoIdr9Y+smNO+dCX78vHOInDVA==",
+                            "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzg5ODg4MDcsInVzZXJfaWQiOjQwOCwidWlkIjoiNWQ0MmFkMDEtMjJhYi00NjBmLWFmNjUtYTgzNGU2YzY2OTZjIn0.3k_iOZF9YXMDbaOsVJSXCWK6xS-B2hml5WbVQ79vr98",
+                            "access_expires_at": "2021-12-08T20:40:07.000+02:00",
+                            "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzk1OTAwMDcsInVpZCI6IjBhNTUxYWFhLTBkNzUtNDM5YS1hZjkzLThlYWU1NDM2MjJjYiJ9.Q0EQmSwYZb_p1GM30I6zDGdwW__gRgpRA65B6H6ursg",
+                            "refresh_expires_at": "2021-12-15T19:40:07.000+02:00"
+                        }
+                    ],
+                    "required": [
+                        "csrf",
+                        "access",
+                        "access_expires_at",
+                        "refresh",
+                        "refresh_expires_at"
+                    ],
+                    "properties": {
+                        "csrf": {
+                            "$id": "#/properties/data/properties/attributes/properties/csrf",
+                            "type": "string",
+                            "title": "The csrf schema",
+                            "examples": [
+                                "IY3VK5X9ktwm1oC+WGJlWL81YxYgKPVAhAJwo0tqDK3k2pygp1+OXJHiqSWAzoIdr9Y+smNO+dCX78vHOInDVA=="
+                            ]
+                        },
+                        "access": {
+                            "$id": "#/properties/data/properties/attributes/properties/access",
+                            "type": "string",
+                            "title": "The access schema",
+                            "examples": [
+                                "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzg5ODg4MDcsInVzZXJfaWQiOjQwOCwidWlkIjoiNWQ0MmFkMDEtMjJhYi00NjBmLWFmNjUtYTgzNGU2YzY2OTZjIn0.3k_iOZF9YXMDbaOsVJSXCWK6xS-B2hml5WbVQ79vr98"
+                            ]
+                        },
+                        "access_expires_at": {
+                            "$id": "#/properties/data/properties/attributes/properties/access_expires_at",
+                            "type": "string",
+                            "title": "The access_expires_at schema",
+                            "examples": [
+                                "2021-12-08T20:40:07.000+02:00"
+                            ]
+                        },
+                        "refresh": {
+                            "$id": "#/properties/data/properties/attributes/properties/refresh",
+                            "type": "string",
+                            "title": "The refresh schema",
+                            "examples": [
+                                "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzk1OTAwMDcsInVpZCI6IjBhNTUxYWFhLTBkNzUtNDM5YS1hZjkzLThlYWU1NDM2MjJjYiJ9.Q0EQmSwYZb_p1GM30I6zDGdwW__gRgpRA65B6H6ursg"
+                            ]
+                        },
+                        "refresh_expires_at": {
+                            "$id": "#/properties/data/properties/attributes/properties/refresh_expires_at",
+                            "type": "string",
+                            "title": "The refresh_expires_at schema",
+                            "examples": [
+                                "2021-12-15T19:40:07.000+02:00"
+                            ]
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}

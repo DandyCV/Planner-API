@@ -27,6 +27,8 @@ gem 'jwt', '~> 2.2.3'
 gem 'redis', '~> 4.4.0'
 # Simple, efficient background processing
 gem 'sidekiq', '~> 6.2.2'
+# Sessions based on JSON Web Tokens
+gem 'jwt_sessions', '~> 2.7.0'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
