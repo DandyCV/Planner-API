@@ -4,15 +4,24 @@
     "type": "object",
     "title": "The root schema",
     "description": "Authentication response schema",
+    "default": {},
     "examples": [
         {
             "data": {
+                "id": "205",
+                "type": "user",
                 "attributes": {
-                    "csrf": "IY3VK5X9ktwm1oC+WGJlWL81YxYgKPVAhAJwo0tqDK3k2pygp1+OXJHiqSWAzoIdr9Y+smNO+dCX78vHOInDVA==",
-                    "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzg5ODg4MDcsInVzZXJfaWQiOjQwOCwidWlkIjoiNWQ0MmFkMDEtMjJhYi00NjBmLWFmNjUtYTgzNGU2YzY2OTZjIn0.3k_iOZF9YXMDbaOsVJSXCWK6xS-B2hml5WbVQ79vr98",
-                    "access_expires_at": "2021-12-08T20:40:07.000+02:00",
-                    "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzk1OTAwMDcsInVpZCI6IjBhNTUxYWFhLTBkNzUtNDM5YS1hZjkzLThlYWU1NDM2MjJjYiJ9.Q0EQmSwYZb_p1GM30I6zDGdwW__gRgpRA65B6H6ursg",
-                    "refresh_expires_at": "2021-12-15T19:40:07.000+02:00"
+                    "email": "winston@jerde-schoen.info",
+                    "created_at": "2022-02-15T21:54:03.097Z"
+                },
+                "meta": {
+                    "session": {
+                        "csrf": "CDi4urSFGW5IY8V/rTz2yDNLJdzM3X3KB8crOWCK0DOOyXKP5a8iR7mhAPuM0o7UzzgQm9W2SnQ4MRogrokFmw==",
+                        "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDQ5NjU2NDcsInVzZXJfaWQiOjIwNSwidWlkIjoiMmJiMDBhOGItMjk4ZS00ZmVhLTkzYzYtOTdkYmI0NDRmNWU5In0.MzLGgyiJlrO_1Xr6tx8BgOG6UXX9esTNHjJpWXhCfys",
+                        "access_expires_at": "2022-02-16T00:54:07.000+02:00",
+                        "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU1NjY4NDcsInVpZCI6IjBmZDczMDFiLTRkN2MtNGE2Ni1hODkyLTE2MjllMTQyNzllYyJ9.kAT0zsx4tNG8b0Wsnd7N6Oy1wX5cb7qlvTdhdDdYcyk",
+                        "refresh_expires_at": "2022-02-22T23:54:07.000+02:00"
+                    }
                 }
             }
         }
@@ -27,79 +36,162 @@
             "title": "The data schema",
             "examples": [
                 {
+                    "id": "205",
+                    "type": "user",
                     "attributes": {
-                        "csrf": "IY3VK5X9ktwm1oC+WGJlWL81YxYgKPVAhAJwo0tqDK3k2pygp1+OXJHiqSWAzoIdr9Y+smNO+dCX78vHOInDVA==",
-                        "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzg5ODg4MDcsInVzZXJfaWQiOjQwOCwidWlkIjoiNWQ0MmFkMDEtMjJhYi00NjBmLWFmNjUtYTgzNGU2YzY2OTZjIn0.3k_iOZF9YXMDbaOsVJSXCWK6xS-B2hml5WbVQ79vr98",
-                        "access_expires_at": "2021-12-08T20:40:07.000+02:00",
-                        "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzk1OTAwMDcsInVpZCI6IjBhNTUxYWFhLTBkNzUtNDM5YS1hZjkzLThlYWU1NDM2MjJjYiJ9.Q0EQmSwYZb_p1GM30I6zDGdwW__gRgpRA65B6H6ursg",
-                        "refresh_expires_at": "2021-12-15T19:40:07.000+02:00"
+                        "email": "winston@jerde-schoen.info",
+                        "created_at": "2022-02-15T21:54:03.097Z"
+                    },
+                    "meta": {
+                        "session": {
+                            "csrf": "CDi4urSFGW5IY8V/rTz2yDNLJdzM3X3KB8crOWCK0DOOyXKP5a8iR7mhAPuM0o7UzzgQm9W2SnQ4MRogrokFmw==",
+                            "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDQ5NjU2NDcsInVzZXJfaWQiOjIwNSwidWlkIjoiMmJiMDBhOGItMjk4ZS00ZmVhLTkzYzYtOTdkYmI0NDRmNWU5In0.MzLGgyiJlrO_1Xr6tx8BgOG6UXX9esTNHjJpWXhCfys",
+                            "access_expires_at": "2022-02-16T00:54:07.000+02:00",
+                            "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU1NjY4NDcsInVpZCI6IjBmZDczMDFiLTRkN2MtNGE2Ni1hODkyLTE2MjllMTQyNzllYyJ9.kAT0zsx4tNG8b0Wsnd7N6Oy1wX5cb7qlvTdhdDdYcyk",
+                            "refresh_expires_at": "2022-02-22T23:54:07.000+02:00"
+                        }
                     }
                 }
             ],
             "required": [
-                "attributes"
+                "id",
+                "type",
+                "attributes",
+                "meta"
             ],
             "properties": {
+                "id": {
+                    "$id": "#/properties/data/properties/id",
+                    "type": "string",
+                    "title": "The id schema",
+                    "examples": [
+                        "205"
+                    ]
+                },
+                "type": {
+                    "$id": "#/properties/data/properties/type",
+                    "type": "string",
+                    "title": "The type schema",
+                    "examples": [
+                        "user"
+                    ]
+                },
                 "attributes": {
                     "$id": "#/properties/data/properties/attributes",
                     "type": "object",
                     "title": "The attributes schema",
                     "examples": [
                         {
-                            "csrf": "IY3VK5X9ktwm1oC+WGJlWL81YxYgKPVAhAJwo0tqDK3k2pygp1+OXJHiqSWAzoIdr9Y+smNO+dCX78vHOInDVA==",
-                            "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzg5ODg4MDcsInVzZXJfaWQiOjQwOCwidWlkIjoiNWQ0MmFkMDEtMjJhYi00NjBmLWFmNjUtYTgzNGU2YzY2OTZjIn0.3k_iOZF9YXMDbaOsVJSXCWK6xS-B2hml5WbVQ79vr98",
-                            "access_expires_at": "2021-12-08T20:40:07.000+02:00",
-                            "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzk1OTAwMDcsInVpZCI6IjBhNTUxYWFhLTBkNzUtNDM5YS1hZjkzLThlYWU1NDM2MjJjYiJ9.Q0EQmSwYZb_p1GM30I6zDGdwW__gRgpRA65B6H6ursg",
-                            "refresh_expires_at": "2021-12-15T19:40:07.000+02:00"
+                            "email": "winston@jerde-schoen.info",
+                            "created_at": "2022-02-15T21:54:03.097Z"
                         }
                     ],
                     "required": [
-                        "csrf",
-                        "access",
-                        "access_expires_at",
-                        "refresh",
-                        "refresh_expires_at"
+                        "email",
+                        "created_at"
                     ],
                     "properties": {
-                        "csrf": {
-                            "$id": "#/properties/data/properties/attributes/properties/csrf",
+                        "email": {
+                            "$id": "#/properties/data/properties/attributes/properties/email",
                             "type": "string",
-                            "title": "The csrf schema",
+                            "title": "The email schema",
                             "examples": [
-                                "IY3VK5X9ktwm1oC+WGJlWL81YxYgKPVAhAJwo0tqDK3k2pygp1+OXJHiqSWAzoIdr9Y+smNO+dCX78vHOInDVA=="
+                                "winston@jerde-schoen.info"
                             ]
                         },
-                        "access": {
-                            "$id": "#/properties/data/properties/attributes/properties/access",
+                        "created_at": {
+                            "$id": "#/properties/data/properties/attributes/properties/created_at",
                             "type": "string",
-                            "title": "The access schema",
+                            "title": "The created_at schema",
                             "examples": [
-                                "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzg5ODg4MDcsInVzZXJfaWQiOjQwOCwidWlkIjoiNWQ0MmFkMDEtMjJhYi00NjBmLWFmNjUtYTgzNGU2YzY2OTZjIn0.3k_iOZF9YXMDbaOsVJSXCWK6xS-B2hml5WbVQ79vr98"
+                                "2022-02-15T21:54:03.097Z"
                             ]
-                        },
-                        "access_expires_at": {
-                            "$id": "#/properties/data/properties/attributes/properties/access_expires_at",
-                            "type": "string",
-                            "title": "The access_expires_at schema",
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "meta": {
+                    "$id": "#/properties/data/properties/meta",
+                    "type": "object",
+                    "title": "The meta schema",
+                    "examples": [
+                        {
+                            "session": {
+                                "csrf": "CDi4urSFGW5IY8V/rTz2yDNLJdzM3X3KB8crOWCK0DOOyXKP5a8iR7mhAPuM0o7UzzgQm9W2SnQ4MRogrokFmw==",
+                                "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDQ5NjU2NDcsInVzZXJfaWQiOjIwNSwidWlkIjoiMmJiMDBhOGItMjk4ZS00ZmVhLTkzYzYtOTdkYmI0NDRmNWU5In0.MzLGgyiJlrO_1Xr6tx8BgOG6UXX9esTNHjJpWXhCfys",
+                                "access_expires_at": "2022-02-16T00:54:07.000+02:00",
+                                "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU1NjY4NDcsInVpZCI6IjBmZDczMDFiLTRkN2MtNGE2Ni1hODkyLTE2MjllMTQyNzllYyJ9.kAT0zsx4tNG8b0Wsnd7N6Oy1wX5cb7qlvTdhdDdYcyk",
+                                "refresh_expires_at": "2022-02-22T23:54:07.000+02:00"
+                            }
+                        }
+                    ],
+                    "required": [
+                        "session"
+                    ],
+                    "properties": {
+                        "session": {
+                            "$id": "#/properties/data/properties/meta/properties/session",
+                            "type": "object",
+                            "title": "The session schema",
                             "examples": [
-                                "2021-12-08T20:40:07.000+02:00"
-                            ]
-                        },
-                        "refresh": {
-                            "$id": "#/properties/data/properties/attributes/properties/refresh",
-                            "type": "string",
-                            "title": "The refresh schema",
-                            "examples": [
-                                "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Mzk1OTAwMDcsInVpZCI6IjBhNTUxYWFhLTBkNzUtNDM5YS1hZjkzLThlYWU1NDM2MjJjYiJ9.Q0EQmSwYZb_p1GM30I6zDGdwW__gRgpRA65B6H6ursg"
-                            ]
-                        },
-                        "refresh_expires_at": {
-                            "$id": "#/properties/data/properties/attributes/properties/refresh_expires_at",
-                            "type": "string",
-                            "title": "The refresh_expires_at schema",
-                            "examples": [
-                                "2021-12-15T19:40:07.000+02:00"
-                            ]
+                                {
+                                    "csrf": "CDi4urSFGW5IY8V/rTz2yDNLJdzM3X3KB8crOWCK0DOOyXKP5a8iR7mhAPuM0o7UzzgQm9W2SnQ4MRogrokFmw==",
+                                    "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDQ5NjU2NDcsInVzZXJfaWQiOjIwNSwidWlkIjoiMmJiMDBhOGItMjk4ZS00ZmVhLTkzYzYtOTdkYmI0NDRmNWU5In0.MzLGgyiJlrO_1Xr6tx8BgOG6UXX9esTNHjJpWXhCfys",
+                                    "access_expires_at": "2022-02-16T00:54:07.000+02:00",
+                                    "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU1NjY4NDcsInVpZCI6IjBmZDczMDFiLTRkN2MtNGE2Ni1hODkyLTE2MjllMTQyNzllYyJ9.kAT0zsx4tNG8b0Wsnd7N6Oy1wX5cb7qlvTdhdDdYcyk",
+                                    "refresh_expires_at": "2022-02-22T23:54:07.000+02:00"
+                                }
+                            ],
+                            "required": [
+                                "csrf",
+                                "access",
+                                "access_expires_at",
+                                "refresh",
+                                "refresh_expires_at"
+                            ],
+                            "properties": {
+                                "csrf": {
+                                    "$id": "#/properties/data/properties/meta/properties/session/properties/csrf",
+                                    "type": "string",
+                                    "title": "The csrf schema",
+                                    "examples": [
+                                        "CDi4urSFGW5IY8V/rTz2yDNLJdzM3X3KB8crOWCK0DOOyXKP5a8iR7mhAPuM0o7UzzgQm9W2SnQ4MRogrokFmw=="
+                                    ]
+                                },
+                                "access": {
+                                    "$id": "#/properties/data/properties/meta/properties/session/properties/access",
+                                    "type": "string",
+                                    "title": "The access schema",
+                                    "examples": [
+                                        "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDQ5NjU2NDcsInVzZXJfaWQiOjIwNSwidWlkIjoiMmJiMDBhOGItMjk4ZS00ZmVhLTkzYzYtOTdkYmI0NDRmNWU5In0.MzLGgyiJlrO_1Xr6tx8BgOG6UXX9esTNHjJpWXhCfys"
+                                    ]
+                                },
+                                "access_expires_at": {
+                                    "$id": "#/properties/data/properties/meta/properties/session/properties/access_expires_at",
+                                    "type": "string",
+                                    "title": "The access_expires_at schema",
+                                    "examples": [
+                                        "2022-02-16T00:54:07.000+02:00"
+                                    ]
+                                },
+                                "refresh": {
+                                    "$id": "#/properties/data/properties/meta/properties/session/properties/refresh",
+                                    "type": "string",
+                                    "title": "The refresh schema",
+                                    "examples": [
+                                        "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU1NjY4NDcsInVpZCI6IjBmZDczMDFiLTRkN2MtNGE2Ni1hODkyLTE2MjllMTQyNzllYyJ9.kAT0zsx4tNG8b0Wsnd7N6Oy1wX5cb7qlvTdhdDdYcyk"
+                                    ]
+                                },
+                                "refresh_expires_at": {
+                                    "$id": "#/properties/data/properties/meta/properties/session/properties/refresh_expires_at",
+                                    "type": "string",
+                                    "title": "The refresh_expires_at schema",
+                                    "examples": [
+                                        "2022-02-22T23:54:07.000+02:00"
+                                    ]
+                                }
+                            },
+                            "additionalProperties": false
                         }
                     },
                     "additionalProperties": false

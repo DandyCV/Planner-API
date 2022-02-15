@@ -34,9 +34,8 @@ module Api::V1::Users::Authentications::Operation
     end
 
     def create_session(auth_user)
-      payload = { user_id: auth_user.id }
-      session = JWTSessions::Session.new(payload: payload)
-      Success(session.login)
+      session = Api::V1::Lib::Service::Session.create_session(auth_user)
+      Success({ user: auth_user, session: session })
     end
   end
 end

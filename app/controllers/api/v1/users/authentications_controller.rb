@@ -4,11 +4,12 @@ module Api::V1::Users
   class AuthenticationsController < ApiController
     def create
       Api::V1::Users::Authentications::Operation::Create.call(params) do |result|
-        result.success do |session|
+        result.success do |data|
           respond_with(
             status: 201,
-            entity: session,
-            serializer: Api::V1::Serializer::Object
+            entity: data[:user],
+            serializer: Api::V1::Users::Authentications::Serializer::Create,
+            params: { session: data[:session] }
           )
         end
 

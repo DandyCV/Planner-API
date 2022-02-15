@@ -32,13 +32,13 @@ RSpec.describe Api::V1::Users::Authentications::Operation::Create do
         end
 
         it 'creates session' do
-          expect(JWTSessions::Session).to receive(:new).with(payload: payload).and_call_original
+          expect(Api::V1::Lib::Service::Session).to receive(:create_session).with(user).and_call_original
           operation
         end
       end
 
       it 'returns saved session' do
-        expect(operation.success).to include(:csrf, :access, :access_expires_at, :refresh, :refresh_expires_at)
+        expect(operation.success).to include(:user, :session)
         expect(operation).to be_success
         operation
       end
