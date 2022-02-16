@@ -4,30 +4,28 @@
     "type": "object",
     "title": "The root schema",
     "description": "Authentication response schema",
-    "default": {},
     "examples": [
         {
             "data": {
-                "id": "205",
+                "id": "550",
                 "type": "user",
                 "attributes": {
-                    "email": "winston@jerde-schoen.info",
-                    "created_at": "2022-02-15T21:54:03.097Z"
-                },
-                "meta": {
-                    "session": {
-                        "csrf": "CDi4urSFGW5IY8V/rTz2yDNLJdzM3X3KB8crOWCK0DOOyXKP5a8iR7mhAPuM0o7UzzgQm9W2SnQ4MRogrokFmw==",
-                        "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDQ5NjU2NDcsInVzZXJfaWQiOjIwNSwidWlkIjoiMmJiMDBhOGItMjk4ZS00ZmVhLTkzYzYtOTdkYmI0NDRmNWU5In0.MzLGgyiJlrO_1Xr6tx8BgOG6UXX9esTNHjJpWXhCfys",
-                        "access_expires_at": "2022-02-16T00:54:07.000+02:00",
-                        "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU1NjY4NDcsInVpZCI6IjBmZDczMDFiLTRkN2MtNGE2Ni1hODkyLTE2MjllMTQyNzllYyJ9.kAT0zsx4tNG8b0Wsnd7N6Oy1wX5cb7qlvTdhdDdYcyk",
-                        "refresh_expires_at": "2022-02-22T23:54:07.000+02:00"
-                    }
+                    "email": "tyrell_graham@bahringer-ondricka.org",
+                    "created_at": "2022-02-16T08:54:51.075Z"
                 }
+            },
+            "meta": {
+                "csrf": "vhu5q7iji+lvv2h1+N8DW6dRgj/BEE9AtbJcmDoiWXmT2f4dqE+pNUsTckkWqjjTLb8aGsR9obn5K+1kPVgCjg==",
+                "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDUwMDUyOTEsInVzZXJfaWQiOjU1MCwidWlkIjoiZmI2ZWFkMjktYWMwMS00OTljLTk0ZjgtMmNmNDgxMWVjYjE0In0.wDiDay0ApxizRCRBWb5y3LlB-5xR0wViAoRHwBeD0R4",
+                "access_expires_at": "2022-02-16T11:54:51.000+02:00",
+                "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU2MDY0OTEsInVpZCI6IjNjYzNiOTEzLTE3MWItNDJiMC1hZmZkLWI4NmIzMjJkNWNlMiJ9.7zts9X1UpsmVav4AedYC-REMz-1Mfr7VV4NEo9Ahd9k",
+                "refresh_expires_at": "2022-02-23T10:54:51.000+02:00"
             }
         }
     ],
     "required": [
-        "data"
+        "data",
+        "meta"
     ],
     "properties": {
         "data": {
@@ -36,28 +34,18 @@
             "title": "The data schema",
             "examples": [
                 {
-                    "id": "205",
+                    "id": "550",
                     "type": "user",
                     "attributes": {
-                        "email": "winston@jerde-schoen.info",
-                        "created_at": "2022-02-15T21:54:03.097Z"
-                    },
-                    "meta": {
-                        "session": {
-                            "csrf": "CDi4urSFGW5IY8V/rTz2yDNLJdzM3X3KB8crOWCK0DOOyXKP5a8iR7mhAPuM0o7UzzgQm9W2SnQ4MRogrokFmw==",
-                            "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDQ5NjU2NDcsInVzZXJfaWQiOjIwNSwidWlkIjoiMmJiMDBhOGItMjk4ZS00ZmVhLTkzYzYtOTdkYmI0NDRmNWU5In0.MzLGgyiJlrO_1Xr6tx8BgOG6UXX9esTNHjJpWXhCfys",
-                            "access_expires_at": "2022-02-16T00:54:07.000+02:00",
-                            "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU1NjY4NDcsInVpZCI6IjBmZDczMDFiLTRkN2MtNGE2Ni1hODkyLTE2MjllMTQyNzllYyJ9.kAT0zsx4tNG8b0Wsnd7N6Oy1wX5cb7qlvTdhdDdYcyk",
-                            "refresh_expires_at": "2022-02-22T23:54:07.000+02:00"
-                        }
+                        "email": "tyrell_graham@bahringer-ondricka.org",
+                        "created_at": "2022-02-16T08:54:51.075Z"
                     }
                 }
             ],
             "required": [
                 "id",
                 "type",
-                "attributes",
-                "meta"
+                "attributes"
             ],
             "properties": {
                 "id": {
@@ -65,7 +53,7 @@
                     "type": "string",
                     "title": "The id schema",
                     "examples": [
-                        "205"
+                        "550"
                     ]
                 },
                 "type": {
@@ -82,8 +70,8 @@
                     "title": "The attributes schema",
                     "examples": [
                         {
-                            "email": "winston@jerde-schoen.info",
-                            "created_at": "2022-02-15T21:54:03.097Z"
+                            "email": "tyrell_graham@bahringer-ondricka.org",
+                            "created_at": "2022-02-16T08:54:51.075Z"
                         }
                     ],
                     "required": [
@@ -96,7 +84,7 @@
                             "type": "string",
                             "title": "The email schema",
                             "examples": [
-                                "winston@jerde-schoen.info"
+                                "tyrell_graham@bahringer-ondricka.org"
                             ]
                         },
                         "created_at": {
@@ -104,97 +92,75 @@
                             "type": "string",
                             "title": "The created_at schema",
                             "examples": [
-                                "2022-02-15T21:54:03.097Z"
+                                "2022-02-16T08:54:51.075Z"
                             ]
                         }
                     },
-                    "additionalProperties": false
-                },
-                "meta": {
-                    "$id": "#/properties/data/properties/meta",
-                    "type": "object",
-                    "title": "The meta schema",
+                    "additionalProperties": true
+                }
+            },
+            "additionalProperties": true
+        },
+        "meta": {
+            "$id": "#/properties/meta",
+            "type": "object",
+            "title": "The meta schema",
+            "examples": [
+                {
+                    "csrf": "vhu5q7iji+lvv2h1+N8DW6dRgj/BEE9AtbJcmDoiWXmT2f4dqE+pNUsTckkWqjjTLb8aGsR9obn5K+1kPVgCjg==",
+                    "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDUwMDUyOTEsInVzZXJfaWQiOjU1MCwidWlkIjoiZmI2ZWFkMjktYWMwMS00OTljLTk0ZjgtMmNmNDgxMWVjYjE0In0.wDiDay0ApxizRCRBWb5y3LlB-5xR0wViAoRHwBeD0R4",
+                    "access_expires_at": "2022-02-16T11:54:51.000+02:00",
+                    "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU2MDY0OTEsInVpZCI6IjNjYzNiOTEzLTE3MWItNDJiMC1hZmZkLWI4NmIzMjJkNWNlMiJ9.7zts9X1UpsmVav4AedYC-REMz-1Mfr7VV4NEo9Ahd9k",
+                    "refresh_expires_at": "2022-02-23T10:54:51.000+02:00"
+                }
+            ],
+            "required": [
+                "csrf",
+                "access",
+                "access_expires_at",
+                "refresh",
+                "refresh_expires_at"
+            ],
+            "properties": {
+                "csrf": {
+                    "$id": "#/properties/meta/properties/csrf",
+                    "type": "string",
+                    "title": "The csrf schema",
                     "examples": [
-                        {
-                            "session": {
-                                "csrf": "CDi4urSFGW5IY8V/rTz2yDNLJdzM3X3KB8crOWCK0DOOyXKP5a8iR7mhAPuM0o7UzzgQm9W2SnQ4MRogrokFmw==",
-                                "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDQ5NjU2NDcsInVzZXJfaWQiOjIwNSwidWlkIjoiMmJiMDBhOGItMjk4ZS00ZmVhLTkzYzYtOTdkYmI0NDRmNWU5In0.MzLGgyiJlrO_1Xr6tx8BgOG6UXX9esTNHjJpWXhCfys",
-                                "access_expires_at": "2022-02-16T00:54:07.000+02:00",
-                                "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU1NjY4NDcsInVpZCI6IjBmZDczMDFiLTRkN2MtNGE2Ni1hODkyLTE2MjllMTQyNzllYyJ9.kAT0zsx4tNG8b0Wsnd7N6Oy1wX5cb7qlvTdhdDdYcyk",
-                                "refresh_expires_at": "2022-02-22T23:54:07.000+02:00"
-                            }
-                        }
-                    ],
-                    "required": [
-                        "session"
-                    ],
-                    "properties": {
-                        "session": {
-                            "$id": "#/properties/data/properties/meta/properties/session",
-                            "type": "object",
-                            "title": "The session schema",
-                            "examples": [
-                                {
-                                    "csrf": "CDi4urSFGW5IY8V/rTz2yDNLJdzM3X3KB8crOWCK0DOOyXKP5a8iR7mhAPuM0o7UzzgQm9W2SnQ4MRogrokFmw==",
-                                    "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDQ5NjU2NDcsInVzZXJfaWQiOjIwNSwidWlkIjoiMmJiMDBhOGItMjk4ZS00ZmVhLTkzYzYtOTdkYmI0NDRmNWU5In0.MzLGgyiJlrO_1Xr6tx8BgOG6UXX9esTNHjJpWXhCfys",
-                                    "access_expires_at": "2022-02-16T00:54:07.000+02:00",
-                                    "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU1NjY4NDcsInVpZCI6IjBmZDczMDFiLTRkN2MtNGE2Ni1hODkyLTE2MjllMTQyNzllYyJ9.kAT0zsx4tNG8b0Wsnd7N6Oy1wX5cb7qlvTdhdDdYcyk",
-                                    "refresh_expires_at": "2022-02-22T23:54:07.000+02:00"
-                                }
-                            ],
-                            "required": [
-                                "csrf",
-                                "access",
-                                "access_expires_at",
-                                "refresh",
-                                "refresh_expires_at"
-                            ],
-                            "properties": {
-                                "csrf": {
-                                    "$id": "#/properties/data/properties/meta/properties/session/properties/csrf",
-                                    "type": "string",
-                                    "title": "The csrf schema",
-                                    "examples": [
-                                        "CDi4urSFGW5IY8V/rTz2yDNLJdzM3X3KB8crOWCK0DOOyXKP5a8iR7mhAPuM0o7UzzgQm9W2SnQ4MRogrokFmw=="
-                                    ]
-                                },
-                                "access": {
-                                    "$id": "#/properties/data/properties/meta/properties/session/properties/access",
-                                    "type": "string",
-                                    "title": "The access schema",
-                                    "examples": [
-                                        "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDQ5NjU2NDcsInVzZXJfaWQiOjIwNSwidWlkIjoiMmJiMDBhOGItMjk4ZS00ZmVhLTkzYzYtOTdkYmI0NDRmNWU5In0.MzLGgyiJlrO_1Xr6tx8BgOG6UXX9esTNHjJpWXhCfys"
-                                    ]
-                                },
-                                "access_expires_at": {
-                                    "$id": "#/properties/data/properties/meta/properties/session/properties/access_expires_at",
-                                    "type": "string",
-                                    "title": "The access_expires_at schema",
-                                    "examples": [
-                                        "2022-02-16T00:54:07.000+02:00"
-                                    ]
-                                },
-                                "refresh": {
-                                    "$id": "#/properties/data/properties/meta/properties/session/properties/refresh",
-                                    "type": "string",
-                                    "title": "The refresh schema",
-                                    "examples": [
-                                        "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU1NjY4NDcsInVpZCI6IjBmZDczMDFiLTRkN2MtNGE2Ni1hODkyLTE2MjllMTQyNzllYyJ9.kAT0zsx4tNG8b0Wsnd7N6Oy1wX5cb7qlvTdhdDdYcyk"
-                                    ]
-                                },
-                                "refresh_expires_at": {
-                                    "$id": "#/properties/data/properties/meta/properties/session/properties/refresh_expires_at",
-                                    "type": "string",
-                                    "title": "The refresh_expires_at schema",
-                                    "examples": [
-                                        "2022-02-22T23:54:07.000+02:00"
-                                    ]
-                                }
-                            },
-                            "additionalProperties": false
-                        }
-                    },
-                    "additionalProperties": false
+                        "vhu5q7iji+lvv2h1+N8DW6dRgj/BEE9AtbJcmDoiWXmT2f4dqE+pNUsTckkWqjjTLb8aGsR9obn5K+1kPVgCjg=="
+                    ]
+                },
+                "access": {
+                    "$id": "#/properties/meta/properties/access",
+                    "type": "string",
+                    "title": "The access schema",
+                    "examples": [
+                        "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDUwMDUyOTEsInVzZXJfaWQiOjU1MCwidWlkIjoiZmI2ZWFkMjktYWMwMS00OTljLTk0ZjgtMmNmNDgxMWVjYjE0In0.wDiDay0ApxizRCRBWb5y3LlB-5xR0wViAoRHwBeD0R4"
+                    ]
+                },
+                "access_expires_at": {
+                    "$id": "#/properties/meta/properties/access_expires_at",
+                    "type": "string",
+                    "title": "The access_expires_at schema",
+                    "examples": [
+                        "2022-02-16T11:54:51.000+02:00"
+                    ]
+                },
+                "refresh": {
+                    "$id": "#/properties/meta/properties/refresh",
+                    "type": "string",
+                    "title": "The refresh schema",
+                    "examples": [
+                        "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU2MDY0OTEsInVpZCI6IjNjYzNiOTEzLTE3MWItNDJiMC1hZmZkLWI4NmIzMjJkNWNlMiJ9.7zts9X1UpsmVav4AedYC-REMz-1Mfr7VV4NEo9Ahd9k"
+                    ]
+                },
+                "refresh_expires_at": {
+                    "$id": "#/properties/meta/properties/refresh_expires_at",
+                    "type": "string",
+                    "title": "The refresh_expires_at schema",
+                    "examples": [
+                        "2022-02-23T10:54:51.000+02:00"
+                    ]
                 }
             },
             "additionalProperties": false

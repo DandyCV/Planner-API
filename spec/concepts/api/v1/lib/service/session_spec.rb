@@ -7,7 +7,7 @@ RSpec.describe Api::V1::Lib::Service::Session do
 
   describe '#create_session' do
     it 'creates user session' do
-      allow(JWTSessions::Session).to receive(:new).with({ payload: { user_id: auth_user.id } }).and_return(session)
+      expect(JWTSessions::Session).to receive(:new).with({ payload: { user_id: auth_user.id } }).and_return(session)
       expect(session).to receive(:login).and_return(login)
       described_class.create_session(auth_user)
     end

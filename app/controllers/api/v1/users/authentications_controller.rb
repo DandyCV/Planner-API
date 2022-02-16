@@ -9,7 +9,7 @@ module Api::V1::Users
             status: 201,
             entity: data[:user],
             serializer: Api::V1::Users::Authentications::Serializer::Create,
-            params: { session: data[:session] }
+            options: { meta: data[:session] }
           )
         end
 
