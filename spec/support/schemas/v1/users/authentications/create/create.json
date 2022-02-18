@@ -1,0 +1,170 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "Authentication response schema",
+    "examples": [
+        {
+            "data": {
+                "id": "550",
+                "type": "user",
+                "attributes": {
+                    "email": "tyrell_graham@bahringer-ondricka.org",
+                    "created_at": "2022-02-16T08:54:51.075Z"
+                }
+            },
+            "meta": {
+                "csrf": "vhu5q7iji+lvv2h1+N8DW6dRgj/BEE9AtbJcmDoiWXmT2f4dqE+pNUsTckkWqjjTLb8aGsR9obn5K+1kPVgCjg==",
+                "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDUwMDUyOTEsInVzZXJfaWQiOjU1MCwidWlkIjoiZmI2ZWFkMjktYWMwMS00OTljLTk0ZjgtMmNmNDgxMWVjYjE0In0.wDiDay0ApxizRCRBWb5y3LlB-5xR0wViAoRHwBeD0R4",
+                "access_expires_at": "2022-02-16T11:54:51.000+02:00",
+                "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU2MDY0OTEsInVpZCI6IjNjYzNiOTEzLTE3MWItNDJiMC1hZmZkLWI4NmIzMjJkNWNlMiJ9.7zts9X1UpsmVav4AedYC-REMz-1Mfr7VV4NEo9Ahd9k",
+                "refresh_expires_at": "2022-02-23T10:54:51.000+02:00"
+            }
+        }
+    ],
+    "required": [
+        "data",
+        "meta"
+    ],
+    "properties": {
+        "data": {
+            "$id": "#/properties/data",
+            "type": "object",
+            "title": "The data schema",
+            "examples": [
+                {
+                    "id": "550",
+                    "type": "user",
+                    "attributes": {
+                        "email": "tyrell_graham@bahringer-ondricka.org",
+                        "created_at": "2022-02-16T08:54:51.075Z"
+                    }
+                }
+            ],
+            "required": [
+                "id",
+                "type",
+                "attributes"
+            ],
+            "properties": {
+                "id": {
+                    "$id": "#/properties/data/properties/id",
+                    "type": "string",
+                    "title": "The id schema",
+                    "examples": [
+                        "550"
+                    ]
+                },
+                "type": {
+                    "$id": "#/properties/data/properties/type",
+                    "type": "string",
+                    "title": "The type schema",
+                    "examples": [
+                        "user"
+                    ]
+                },
+                "attributes": {
+                    "$id": "#/properties/data/properties/attributes",
+                    "type": "object",
+                    "title": "The attributes schema",
+                    "examples": [
+                        {
+                            "email": "tyrell_graham@bahringer-ondricka.org",
+                            "created_at": "2022-02-16T08:54:51.075Z"
+                        }
+                    ],
+                    "required": [
+                        "email",
+                        "created_at"
+                    ],
+                    "properties": {
+                        "email": {
+                            "$id": "#/properties/data/properties/attributes/properties/email",
+                            "type": "string",
+                            "title": "The email schema",
+                            "examples": [
+                                "tyrell_graham@bahringer-ondricka.org"
+                            ]
+                        },
+                        "created_at": {
+                            "$id": "#/properties/data/properties/attributes/properties/created_at",
+                            "type": "string",
+                            "title": "The created_at schema",
+                            "examples": [
+                                "2022-02-16T08:54:51.075Z"
+                            ]
+                        }
+                    },
+                    "additionalProperties": true
+                }
+            },
+            "additionalProperties": true
+        },
+        "meta": {
+            "$id": "#/properties/meta",
+            "type": "object",
+            "title": "The meta schema",
+            "examples": [
+                {
+                    "csrf": "vhu5q7iji+lvv2h1+N8DW6dRgj/BEE9AtbJcmDoiWXmT2f4dqE+pNUsTckkWqjjTLb8aGsR9obn5K+1kPVgCjg==",
+                    "access": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDUwMDUyOTEsInVzZXJfaWQiOjU1MCwidWlkIjoiZmI2ZWFkMjktYWMwMS00OTljLTk0ZjgtMmNmNDgxMWVjYjE0In0.wDiDay0ApxizRCRBWb5y3LlB-5xR0wViAoRHwBeD0R4",
+                    "access_expires_at": "2022-02-16T11:54:51.000+02:00",
+                    "refresh": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU2MDY0OTEsInVpZCI6IjNjYzNiOTEzLTE3MWItNDJiMC1hZmZkLWI4NmIzMjJkNWNlMiJ9.7zts9X1UpsmVav4AedYC-REMz-1Mfr7VV4NEo9Ahd9k",
+                    "refresh_expires_at": "2022-02-23T10:54:51.000+02:00"
+                }
+            ],
+            "required": [
+                "csrf",
+                "access",
+                "access_expires_at",
+                "refresh",
+                "refresh_expires_at"
+            ],
+            "properties": {
+                "csrf": {
+                    "$id": "#/properties/meta/properties/csrf",
+                    "type": "string",
+                    "title": "The csrf schema",
+                    "examples": [
+                        "vhu5q7iji+lvv2h1+N8DW6dRgj/BEE9AtbJcmDoiWXmT2f4dqE+pNUsTckkWqjjTLb8aGsR9obn5K+1kPVgCjg=="
+                    ]
+                },
+                "access": {
+                    "$id": "#/properties/meta/properties/access",
+                    "type": "string",
+                    "title": "The access schema",
+                    "examples": [
+                        "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDUwMDUyOTEsInVzZXJfaWQiOjU1MCwidWlkIjoiZmI2ZWFkMjktYWMwMS00OTljLTk0ZjgtMmNmNDgxMWVjYjE0In0.wDiDay0ApxizRCRBWb5y3LlB-5xR0wViAoRHwBeD0R4"
+                    ]
+                },
+                "access_expires_at": {
+                    "$id": "#/properties/meta/properties/access_expires_at",
+                    "type": "string",
+                    "title": "The access_expires_at schema",
+                    "examples": [
+                        "2022-02-16T11:54:51.000+02:00"
+                    ]
+                },
+                "refresh": {
+                    "$id": "#/properties/meta/properties/refresh",
+                    "type": "string",
+                    "title": "The refresh schema",
+                    "examples": [
+                        "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NDU2MDY0OTEsInVpZCI6IjNjYzNiOTEzLTE3MWItNDJiMC1hZmZkLWI4NmIzMjJkNWNlMiJ9.7zts9X1UpsmVav4AedYC-REMz-1Mfr7VV4NEo9Ahd9k"
+                    ]
+                },
+                "refresh_expires_at": {
+                    "$id": "#/properties/meta/properties/refresh_expires_at",
+                    "type": "string",
+                    "title": "The refresh_expires_at schema",
+                    "examples": [
+                        "2022-02-23T10:54:51.000+02:00"
+                    ]
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}

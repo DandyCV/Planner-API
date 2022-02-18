@@ -33,9 +33,6 @@ Naming/RescuedExceptionsVariableName:
 
 # Metrics ---------------------------------------------------------------------
 
-Metrics/LineLength:
-  Max: 120
-
 Metrics/MethodLength:
   Max: 20
 
@@ -48,6 +45,9 @@ Metrics/BlockLength:
     - config/routes.rb
 
 # Layout ----------------------------------------------------------------------
+
+Layout/LineLength:
+  Max: 140
 
 Layout/ClassStructure:
   Enabled: true

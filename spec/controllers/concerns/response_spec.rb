@@ -32,12 +32,12 @@ RSpec.describe Response do
     context 'with custom params' do
       let(:serialized_entity) { { id: 1, **entity } }
       let(:serializer_class) { class_double('TestSerializerClass') }
-      let(:serializer_class_instance) { instance_double('TestSerializerInstance', to_json: serialized_entity) }
+      let(:serializer_instance) { instance_double('TestSerializerInstance', to_json: serialized_entity) }
       let(:status) { :some_status }
-      let(:args) { { entity: entity, status: status, serializer: serializer_class } }
+      let(:args) { { entity: entity, status: status, serializer: serializer_class, options: '42' } }
 
       it 'calls render with custom params' do
-        expect(serializer_class).to receive(:new).with(entity).and_return(serializer_class_instance)
+        expect(serializer_class).to receive(:new).with(entity, args[:options]).and_return(serializer_instance)
         expect(test_class_instance).to receive(:render).with(json: serialized_entity, status: status)
         respond_with
       end

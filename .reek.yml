@@ -14,5 +14,8 @@ detectors:
   TooManyStatements:
     max_statements: 6
 
+  LongParameterList:
+    max_params: 4
+
 exclude_paths:
   - db/

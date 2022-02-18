@@ -1,5 +1,13 @@
 en:
   users:
+    authentications:
+      errors:
+        unauthorized: 'not authorized'
+      operation:
+        create:
+          email: 'incorect user email'
+          confirmation: 'confirm registration first'
+          password: 'wrong password'
     registrations:
       contract:
         create:
