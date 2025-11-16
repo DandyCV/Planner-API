@@ -23,13 +23,13 @@ RSpec.describe ApplicationContract do
     context 'when params is ActionController::Parameters instance' do
       let(:ctx) { ActionController::Parameters.new(values) }
 
-      include_examples 'returns contract instance with new getters from params keys'
+      it_behaves_like 'returns contract instance with new getters from params keys'
     end
 
     context 'when params is a Hash instance' do
       let(:ctx) { values }
 
-      include_examples 'returns contract instance with new getters from params keys'
+      it_behaves_like 'returns contract instance with new getters from params keys'
     end
   end
 end

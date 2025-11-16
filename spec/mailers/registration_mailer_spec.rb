@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RegistrationMailer, type: :mailer do
+RSpec.describe RegistrationMailer do
   it { expect(described_class).to be < ApplicationMailer }
 
   describe '#confirmation email' do

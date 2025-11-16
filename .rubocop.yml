@@ -1,7 +1,9 @@
-require:
+plugins:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-factory_bot
+  - rubocop-rspec_rails
 
 AllCops:
   NewCops: enable
@@ -117,7 +119,27 @@ RSpec/InstanceVariable:
 RSpec/BeforeAfterAll:
   Enabled: false
 
-Gemspec/DateAssignment:
+# FactoryBot ------------------------------------------------------------------
+
+FactoryBot:
+  Include:
+    - spec/factories.rb
+    - spec/factories/**/*.rb
+    - spec/support/factory_bot/**/*.rb
+    - test/factories/**/*.rb
+    - factories/**/*.rb
+
+FactoryBot/SyntaxMethods:
+  Enabled: true
+
+# RSpec Rails -----------------------------------------------------------------
+
+RSpecRails:
+  Enabled: true
+  Include:
+    - spec/**/*.rb
+
+Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
 
 Layout/SpaceBeforeBrackets:

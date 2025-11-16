@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Confirmations', type: :request do
+RSpec.describe 'Confirmations' do
   let(:user) { create(:user) }
   let(:user_data) { { id: user.id, email: user.email, created_at: user.created_at } }
   let(:email_token) { generate_token(user_data) }

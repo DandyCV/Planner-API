@@ -2,7 +2,7 @@
 
 RSpec.describe Api::V1::Lib::Service::Session do
   let(:auth_user) { create(:user, :confirmed, email: random_email, password: random_password) }
-  let(:session) { instance_double('Session', login: login) }
+  let(:session) { instance_double(Session, login: login) }
   let(:login) { { access: '42' } }
 
   describe '#create_session' do

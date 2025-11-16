@@ -3,7 +3,7 @@
 class ApplicationOperation
   include Dry::Transaction
 
-  def self.call(params, &block)
-    new.call(params, &block)
+  def self.call(params, &)
+    new.call(params, &)
   end
 end

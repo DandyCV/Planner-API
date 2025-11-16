@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe User, type: :model do
+RSpec.describe User do
   it { expect(described_class).to be < ApplicationRecord }
   it { is_expected.to have_db_column(:id).of_type(:integer) }
   it { is_expected.to have_db_column(:email).of_type(:string) }

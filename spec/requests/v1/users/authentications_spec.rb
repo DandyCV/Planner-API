@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Authentications', type: :request do
+RSpec.describe 'Authentications' do
   let(:password) { random_password }
   let(:user) { create(:user, :confirmed, password: password) }
   let(:params) { { email: user.email, password: password } }
