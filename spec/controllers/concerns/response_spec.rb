@@ -31,8 +31,8 @@ RSpec.describe Response do
 
     context 'with custom params' do
       let(:serialized_entity) { { id: 1, **entity } }
-      let(:serializer_class) { class_double('TestSerializerClass') }
-      let(:serializer_instance) { instance_double('TestSerializerInstance', to_json: serialized_entity) }
+      let(:serializer_class) { class_double(TestSerializerClass) }
+      let(:serializer_instance) { instance_double(TestSerializerInstance, to_json: serialized_entity) }
       let(:status) { :some_status }
       let(:args) { { entity: entity, status: status, serializer: serializer_class, options: '42' } }
 

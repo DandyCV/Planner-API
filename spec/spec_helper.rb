@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-Dir[Rails.root.join('spec/shared/**/*.rb')].each { |file| require file }
+Rails.root.glob('spec/shared/**/*.rb').each { |file| require file }
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

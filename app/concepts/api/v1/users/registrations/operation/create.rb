@@ -32,9 +32,9 @@ module Api::V1::Users::Registrations::Operation
     def send_email(ctx)
       user = ctx[:user]
       RegistrationMailer.confirmation_email(
-        email_token: ctx[:email_token],
-        email: user.email,
-        path: Rails.application.config.user_confirmation_path
+        user.email,
+        ctx[:email_token],
+        Rails.application.config.user_confirmation_path
       ).deliver_later
       Success(user)
     end

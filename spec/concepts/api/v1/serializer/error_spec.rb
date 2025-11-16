@@ -4,8 +4,8 @@ RSpec.describe Api::V1::Serializer::Error do
   describe '#to_json' do
     subject(:error_serializer) { described_class.new(object).to_json }
 
-    let(:object) { instance_double('SerializableObject', errors: [error_object]) }
-    let(:error_object) { instance_double('ErrorleObject', path: [pointer], text: detail) }
+    let(:object) { instance_double(SerializableObject, errors: [error_object]) }
+    let(:error_object) { instance_double(ErrorleObject, path: [pointer], text: detail) }
     let(:pointer) { :some_pointer }
     let(:detail) { 'some detail' }
     let(:error_hash) do

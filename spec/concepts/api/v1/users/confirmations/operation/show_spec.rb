@@ -13,7 +13,7 @@ RSpec.describe Api::V1::Users::Confirmations::Operation::Show do
 
     describe 'Success' do
       it 'returns updated user' do
-        expect(operation.success).to eq(true)
+        expect(operation.success).to be(true)
         expect(operation).to be_success
         expect(user.reload).to be_confirmed
       end
@@ -24,7 +24,7 @@ RSpec.describe Api::V1::Users::Confirmations::Operation::Show do
         let(:email_token) { 'this.is.token' }
 
         it 'returns errors' do
-          expect(operation.failure).to be_an_instance_of(::Hash)
+          expect(operation.failure).to be_an_instance_of(Hash)
           expect(operation.failure[:errors]).to include({ token: I18n.t('users.confirmations.token.invalid') })
           expect(user.reload).not_to be_confirmed
           expect(operation).to be_failure
@@ -41,7 +41,7 @@ RSpec.describe Api::V1::Users::Confirmations::Operation::Show do
         end
 
         it 'returns errors' do
-          expect(operation.failure).to be_an_instance_of(::Hash)
+          expect(operation.failure).to be_an_instance_of(Hash)
           expect(operation.failure[:errors]).to include({ token: I18n.t('users.confirmations.token.expired') })
           expect(user.reload).not_to be_confirmed
           expect(operation).to be_failure
@@ -58,7 +58,7 @@ RSpec.describe Api::V1::Users::Confirmations::Operation::Show do
         end
 
         it 'returns errors' do
-          expect(operation.failure).to be_an_instance_of(::Hash)
+          expect(operation.failure).to be_an_instance_of(Hash)
           expect(operation.failure[:errors]).to include({ token: I18n.t('users.confirmations.token.data') })
           expect(user.reload).not_to be_confirmed
           expect(operation).to be_failure
