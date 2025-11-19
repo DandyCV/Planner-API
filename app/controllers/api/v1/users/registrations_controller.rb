@@ -2,6 +2,8 @@
 
 module Api::V1::Users
   class RegistrationsController < ApiController
+    skip_before_action :authorize_access_session, only: :create
+
     def create
       Api::V1::Users::Registrations::Operation::Create.call(params) do |result|
         result.success do |user|
