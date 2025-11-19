@@ -43,7 +43,7 @@ RSpec.describe 'Authentications' do
     context 'with valid session' do
       it 'returns new tokens' do
         expect(response).to be_successful
-        expect(response).to match_json_schema('v1/users/authentications/refresh/create')
+        expect(response).to match_json_schema('v1/users/authentications/refresh/refresh')
       end
     end
 
