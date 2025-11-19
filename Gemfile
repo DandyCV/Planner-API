@@ -24,7 +24,7 @@ gem 'truemail', '~> 3.3'
 # A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard
 gem 'jwt', '~> 2.8'
 # A Ruby client library for Redis
-gem 'redis', '~> 4.8.1'
+gem 'redis', '~> 5.1'
 # Simple, efficient background processing
 gem 'sidekiq', '~> 7.3'
 # Sessions based on JSON Web Tokens
