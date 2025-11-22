@@ -61,3 +61,17 @@ unless defined?(Context)
     attr_reader :data
   end
 end
+
+unless defined?(RefreshResult)
+  class RefreshResult
+    def success(*); end
+    def failure(*); end
+  end
+end
+
+unless defined?(DestroyResult)
+  class DestroyResult
+    def success(*); end
+    def failure(*); end
+  end
+end

@@ -8,3 +8,4 @@ JWTSessions.token_store = Rails.env.test? ? :memory : [:redis, {
     redis_db_name: '0',
     token_prefix: 'jwt_'
 }]
+JWTSessions.signing_key = Rails.application.secret_key_base

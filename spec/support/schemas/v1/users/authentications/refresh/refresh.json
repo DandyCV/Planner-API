@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "description": "Authentication refresh response schema",
+  "required": [
+    "meta"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "csrf",
+        "access",
+        "access_expires_at"
+      ],
+      "properties": {
+        "csrf": {
+          "type": "string"
+        },
+        "access": {
+          "type": "string"
+        },
+        "access_expires_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

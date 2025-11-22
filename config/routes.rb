@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :users do
-        resource :authentication, only: :create
+        resource :authentication, only: %i[create destroy] do
+          post :refresh, on: :collection
+        end
         resource :confirmation, only: :show
         resource :registration, only: :create
       end
