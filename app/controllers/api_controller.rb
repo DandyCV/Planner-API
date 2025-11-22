@@ -13,6 +13,10 @@ class ApiController < ActionController::API
     authorize_access_request!
   end
 
+  def current_user
+    @current_user ||= User.find(payload['user_id'])
+  end
+
   def not_authorized
     respond_with(
       status: 401,

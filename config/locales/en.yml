@@ -19,6 +19,9 @@ en:
         invalid: 'invalid token'
         data: 'invalid user data'
         expired: 'token is expired'
+  plans:
+    operation:
+      not_found: 'plan not found'
   user_mailer:
     confirmation:
       subject: 'Planner-API user registration'

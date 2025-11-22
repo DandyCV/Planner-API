@@ -31,7 +31,7 @@ RSpec.describe Api::V1::Users::Registrations::Operation::Create do
 
     describe 'Failure' do
       context 'when user with invalid params' do
-        let(:params) { '42' }
+        let(:params) { { email: '', password: '', password_confirmation: '' } }
 
         it 'returns errors' do
           expect { operation }.not_to change(User, :count)

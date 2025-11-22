@@ -3,7 +3,7 @@
 class ApplicationOperation
   include Dry::Transaction
 
-  def self.call(params, &)
-    new.call(params, &)
+  def self.call(params, **kwargs, &)
+    new.call(params.merge(kwargs), &)
   end
 end

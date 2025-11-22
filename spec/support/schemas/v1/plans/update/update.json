@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/plan_update.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "Plan update response schema",
+    "default": {},
+    "required": [
+        "data"
+    ],
+    "properties": {
+        "data": {
+            "$id": "#/properties/data",
+            "type": "object",
+            "title": "The data schema",
+            "required": [
+                "id",
+                "type",
+                "attributes"
+            ],
+            "properties": {
+                "id": {
+                    "$id": "#/properties/data/properties/id",
+                    "type": "string",
+                    "title": "The id schema"
+                },
+                "type": {
+                    "$id": "#/properties/data/properties/type",
+                    "type": "string",
+                    "title": "The type schema"
+                },
+                "attributes": {
+                    "$id": "#/properties/data/properties/attributes",
+                    "type": "object",
+                    "title": "The attributes schema",
+                    "required": [
+                        "id",
+                        "title",
+                        "created_at",
+                        "updated_at"
+                    ],
+                    "properties": {
+                        "id": {
+                            "$id": "#/properties/data/properties/attributes/properties/id",
+                            "type": "integer",
+                            "title": "The id schema"
+                        },
+                        "title": {
+                            "$id": "#/properties/data/properties/attributes/properties/title",
+                            "type": "string",
+                            "title": "The title schema"
+                        },
+                        "created_at": {
+                            "$id": "#/properties/data/properties/attributes/properties/created_at",
+                            "type": "string",
+                            "title": "The created_at schema"
+                        },
+                        "updated_at": {
+                            "$id": "#/properties/data/properties/attributes/properties/updated_at",
+                            "type": "string",
+                            "title": "The updated_at schema"
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}
+

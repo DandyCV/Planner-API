@@ -8,13 +8,13 @@ require File.expand_path('../config/environment', __dir__)
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
+require 'rspec/rails'
+
 %w[support].each do |dir|
   Rails.root.glob("spec/#{dir}/**/*.rb").each do |file|
     require file unless file.to_s[/\A.+_spec\.rb\z/]
   end
 end
-
-require 'rspec/rails'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!

@@ -3,6 +3,8 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      resources :plans, only: %i[index create show update destroy]
+
       namespace :users do
         resource :authentication, only: %i[create destroy] do
           post :refresh, on: :collection
