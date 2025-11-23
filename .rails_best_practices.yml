@@ -1,0 +1,4 @@
+RemoveUnusedMethodsCheck:
+  except_classes:
+    - ApiController
+
