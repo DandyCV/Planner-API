@@ -1,0 +1,56 @@
+# This workflow will install a prebuilt Ruby version, install dependencies, and
+# run tests and linters.
+name: "Code Checks"
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    services:
+      postgres:
+        image: postgres:11-alpine
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_DB: Planner_API_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://postgres:postgres@localhost:5432/Planner_API_test"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.6'
+          bundler-cache: true
+      - name: Set up database schema
+        run: bin/rails db:schema:load
+      - name: Run tests
+        run: bundle exec rspec
+
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.6'
+          bundler-cache: true
+      - name: Generate binstubs
+        run: bundle binstubs bundler-audit brakeman rubocop reek fasterer rails_best_practices
+      - name: Security audit dependencies
+        run: bin/bundler-audit --update
+      - name: Security audit application code
+        run: bin/brakeman --exit-on-warn --quiet --summary
+      - name: Lint Ruby files with RuboCop
+        run: bin/rubocop --parallel
+      - name: Check code smells with Reek
+        run: bin/reek --force-exclusion
+      - name: Analyze performance with Fasterer
+        run: bin/fasterer
+      - name: Check Rails best practices
+        run: bin/rails_best_practices
