@@ -28,10 +28,10 @@ jobs:
         with:
           script: |
             const requiredLabels = [
-              'Platform improvement',
-              'Improvements or additions to documentation',
-              'New feature or request',
-              'Bug fixing'
+              'tech',
+              'documentation',
+              'enhancement',
+              'fix'
             ];
 
             const prLabels = context.payload.pull_request.labels.map(label => label.name);
