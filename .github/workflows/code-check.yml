@@ -1,6 +1,6 @@
 # This workflow will install a prebuilt Ruby version, install dependencies, and
 # run tests and linters.
-name: "Planner-API CI"
+name: "Code Checks"
 on: [push]
 jobs:
   test:

@@ -1,0 +1,48 @@
+# This workflow checks if PR branch is up to date with the target branch
+name: "PR Branch Checks"
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check if branch is up to date
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          BEHIND=$(git rev-list --count HEAD..origin/${{ github.base_ref }})
+          if [ "$BEHIND" -gt 0 ]; then
+            echo "❌ Branch is $BEHIND commits behind ${{ github.base_ref }}"
+            echo "Please update your branch with: git merge origin/${{ github.base_ref }}"
+            exit 1
+          else
+            echo "✅ Branch is up to date with ${{ github.base_ref }}"
+          fi
+      - name: Check PR has required label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const requiredLabels = [
+              'Platform improvement',
+              'Improvements or additions to documentation',
+              'New feature or request',
+              'Bug fixing'
+            ];
+
+            const prLabels = context.payload.pull_request.labels.map(label => label.name);
+            const hasRequiredLabel = requiredLabels.some(label => prLabels.includes(label));
+
+            if (!hasRequiredLabel) {
+              core.setFailed(
+                `❌ PR must have at least one of these labels:\n` +
+                requiredLabels.map(l => `  - ${l}`).join('\n') +
+                `\n\nCurrent labels: ${prLabels.length > 0 ? prLabels.join(', ') : 'none'}`
+              );
+            } else {
+              console.log(`✅ PR has required label: ${prLabels.filter(l => requiredLabels.includes(l)).join(', ')}`);
+            }
