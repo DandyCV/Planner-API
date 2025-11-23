@@ -1,5 +1,5 @@
 # This workflow checks if PR branch is up to date with the target branch
-name: "PR Branch Checks"
+name: "Pull Request Checks"
 on:
   pull_request:
     types: [opened, synchronize, reopened]
@@ -23,6 +23,10 @@ jobs:
           else
             echo "✅ Branch is up to date with ${{ github.base_ref }}"
           fi
+
+  check-labels:
+    runs-on: ubuntu-22.04
+    steps:
       - name: Check PR has required label
         uses: actions/github-script@v7
         with:
