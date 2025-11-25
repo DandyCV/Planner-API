@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Authentications' do
-  let(:password) { random_password }
-  let(:user) { create(:user, :confirmed, password: password) }
-  let(:params) { { email: user.email, password: password } }
-  let(:headers) { { 'Authorization' => "Bearer #{session_tokens[:access]}" } }
-  let(:session_tokens) { Api::V1::Lib::Service::Session.create_session(user) }
+  include_context 'with jwt authentication'
 
-  before { JWTSessions.encryption_key = 'test123456' }
+  let(:params) { { email: user.email, password: password } }
 
   describe 'POST /api/v1/users/authentication' do
     before { post '/api/v1/users/authentication', params: params, as: :json }
@@ -36,7 +32,6 @@ RSpec.describe 'Authentications' do
 
   describe 'POST /api/v1/users/authentication/refresh' do
     before do
-      session_tokens
       post '/api/v1/users/authentication/refresh', headers: headers
     end
 
@@ -72,8 +67,6 @@ RSpec.describe 'Authentications' do
   end
 
   describe 'DELETE /api/v1/users/authentication' do
-    before { session_tokens }
-
     it 'destroys the session' do
       delete '/api/v1/users/authentication', headers: headers
       expect(response).to have_http_status(:no_content)

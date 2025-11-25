@@ -1,0 +1,70 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/error_404.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "404 error schema",
+    "examples": [
+        {
+            "errors": [
+                {
+                    "source": {
+                        "pointer": "/data/attributes/message"
+                    },
+                    "detail": "plan not found"
+                }
+            ]
+        }
+    ],
+    "required": [
+        "errors"
+    ],
+    "properties": {
+        "errors": {
+            "$id": "#/properties/errors",
+            "type": "array",
+            "title": "The errors schema",
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/errors/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/errors/items/anyOf/0",
+                        "type": "object",
+                        "title": "The first anyOf schema",
+                        "required": [
+                            "source",
+                            "detail"
+                        ],
+                        "properties": {
+                            "source": {
+                                "$id": "#/properties/errors/items/anyOf/0/properties/source",
+                                "type": "object",
+                                "title": "The source schema",
+                                "required": [
+                                    "pointer"
+                                ],
+                                "properties": {
+                                    "pointer": {
+                                        "$id": "#/properties/errors/items/anyOf/0/properties/source/properties/pointer",
+                                        "type": "string",
+                                        "title": "The pointer schema"
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            "detail": {
+                                "$id": "#/properties/errors/items/anyOf/0/properties/detail",
+                                "type": "string",
+                                "title": "The detail schema"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": false
+}
+
