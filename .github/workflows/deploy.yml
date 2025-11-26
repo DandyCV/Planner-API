@@ -2,7 +2,7 @@ name: "Deploy"
 on:
   push:
     branches:
-      - develop
+      - tech/aws-deploy
 jobs:
   deploy:
     name: AWS EC2
@@ -19,9 +19,9 @@ jobs:
           script: |
             set -euo pipefail
             cd "${{ secrets.AWS_EC2_APP_DIR }}"
-            git fetch origin develop
-            git checkout develop
-            git pull origin develop
+            git fetch origin tech/aws-deploy
+            git checkout tech/aws-deploy
+            git pull origin tech/aws-deploy
             cat <<'EOF' > .env
             DATABASE_URL='${{ secrets.DATABASE_URL }}'
             RAILS_MASTER_KEY='${{ secrets.RAILS_MASTER_KEY }}'
