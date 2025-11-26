@@ -96,18 +96,18 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.action_mailer.default_url_options = {
-    host: ENV.fetch('APP_HOST', 'localhost:3000')
+    host: ENV.fetch('APP_HOST') { 'localhost:3000' }
   }
 
-  config.default_sender_email = ENV.fetch('SENDER_EMAIL', 'no-reply@example.com')
+  config.default_sender_email = ENV.fetch('SENDER_EMAIL') { 'no-reply@example.com' }
   config.user_confirmation_path = 'api/v1/users/confirmation'
 
   config.action_mailer.smtp_settings = {
-    address: ENV.fetch('SMTP_ADDRESS', 'smtp.gmail.com'),
-    port: ENV.fetch('SMTP_PORT', 587),
-    user_name: ENV.fetch('SMTP_USERNAME', Rails.application.credentials.email[:login]),
-    password: ENV.fetch('SMTP_PASSWORD', Rails.application.credentials.email[:password]),
-    authentication: ENV.fetch('SMTP_AUTHENTICATION', 'plain'),
-    enable_starttls_auto: ENV.fetch('SMTP_ENABLE_STARTTLS_AUTO', true)
+    address: ENV.fetch('SMTP_ADDRESS') { 'smtp.gmail.com' },
+    port: ENV.fetch('SMTP_PORT') { 587 },
+    user_name: ENV.fetch('SMTP_USERNAME') { Rails.application.credentials.dig(:email, :login) },
+    password: ENV.fetch('SMTP_PASSWORD') { Rails.application.credentials.dig(:email, :password) },
+    authentication: ENV.fetch('SMTP_AUTHENTICATION') { 'plain' },
+    enable_starttls_auto: ENV.fetch('SMTP_ENABLE_STARTTLS_AUTO') { true }
   }
 end
