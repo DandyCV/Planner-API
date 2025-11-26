@@ -1,0 +1,13 @@
+.git
+.gitignore
+.byebug_history
+log/*
+tmp/*
+coverage/*
+spec/*
+.rspec
+README.md
+.DS_Store
+vendor/bundle
+.bundle
+node_modules
