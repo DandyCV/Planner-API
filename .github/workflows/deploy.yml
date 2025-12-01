@@ -41,15 +41,15 @@ jobs:
             echo "Workflow variable APP_HOST is not set."
             exit 1
           fi
-          HEALTHCHECK_URL="${APP_HOST%/}/api/v1/healthcheck"
+          HEALTHCHECK_URL="${APP_HOST%}/api/v1/healthcheck"
           attempts=0
           until curl -fsS "$HEALTHCHECK_URL"; do
             attempts=$((attempts + 1))
             if [ "$attempts" -ge 5 ]; then
-              echo "Healthcheck failed after $attempts attempts"
+              echo "Healthcheck failed after $attempts attempts for $HEALTHCHECK_URL"
               exit 1
             fi
-            echo "Healthcheck failed (attempt $attempts), retrying in 10s..."
+            echo "Healthcheck failed for $HEALTHCHECK_URL (attempt $attempts), retrying in 10s..."
             sleep 10
           done
           echo "Healthcheck endpoint is healthy."
