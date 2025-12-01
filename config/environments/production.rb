@@ -96,7 +96,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.action_mailer.default_url_options = {
-    host: ENV.fetch('APP_HOST') { 'http://3.229.137.213:3000' }
+    host: ENV.fetch('APP_HOST') { 'planner-api.duckdns.org' }
   }
 
   config.default_sender_email = ENV.fetch('SENDER_EMAIL') { 'no-reply@example.com' }
