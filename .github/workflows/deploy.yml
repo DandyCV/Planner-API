@@ -1,0 +1,55 @@
+name: "Deploy"
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  deploy:
+    name: AWS EC2
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.AWS_EC2_HOST }}
+          username: ${{ secrets.AWS_EC2_USER }}
+          key: ${{ secrets.AWS_EC2_SSH_KEY }}
+          script: |
+            set -euo pipefail
+            cd "${{ secrets.AWS_EC2_APP_DIR }}"
+            git fetch origin develop
+            git checkout develop
+            git pull origin develop
+            cat <<'EOF' > .env
+            DATABASE_URL='${{ secrets.DATABASE_URL }}'
+            RAILS_MASTER_KEY='${{ secrets.RAILS_MASTER_KEY }}'
+            EOF
+            docker compose down
+            docker compose up -d --build
+  healthcheck:
+    name: Verify Healthcheck
+    needs: deploy
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Wait for healthcheck endpoint
+        run: |
+          set -euo pipefail
+          APP_HOST="${{ vars.APP_HOST }}"
+          if [ -z "$APP_HOST" ]; then
+            echo "Workflow variable APP_HOST is not set."
+            exit 1
+          fi
+          HEALTHCHECK_URL="${APP_HOST%/}/api/v1/healthcheck"
+          attempts=0
+          until curl -fsS "$HEALTHCHECK_URL"; do
+            attempts=$((attempts + 1))
+            if [ "$attempts" -ge 5 ]; then
+              echo "Healthcheck failed after $attempts attempts"
+              exit 1
+            fi
+            echo "Healthcheck failed (attempt $attempts), retrying in 10s..."
+            sleep 10
+          done
+          echo "Healthcheck endpoint is healthy."
